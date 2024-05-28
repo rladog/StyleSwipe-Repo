@@ -1,0 +1,25 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "app/(tabs)/_layout.jsx",
+    "app/(tabs)/[]collection.jsx",
+    "app/(tabs)/explore.jsx",
+    "app/(tabs)/index.jsx",
+    "app/+not-found.jsx",
+    "app/+html.jsx",
+    "app/_layout.jsx",
+    "app/(tabs)/profile.jsx",
+    "components/page_components/home/Card.jsx",
+    "assets/data/cards.js"
+  ]
+}

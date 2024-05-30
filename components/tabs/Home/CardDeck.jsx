@@ -3,12 +3,12 @@ import { useState } from "react";
 import { StyleSheet } from "react-native";
 import ItemCard from "../_common/ItemCard";
 
-export default function CardDeck({ swipeRightFn }) {
-  const [cards, setCards] = useState([]);
+export default function CardDeck({ cards, swipeRightFn }) {
+  const [data, setData] = useState(cards);
 
   return (
     <Swiper
-      cards={cards}
+      cards={data}
       renderCard={(card) => (
         //Render the cards using the ItemCard component
         //Gradient height should be a fraction between 0 and 1 based on how fast the gradient should start

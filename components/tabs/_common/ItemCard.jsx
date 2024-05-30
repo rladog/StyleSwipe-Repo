@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 export default function ItemCard({
   height,
+  width,
   gradientHeight,
   imageURL,
   name,
@@ -18,7 +19,7 @@ export default function ItemCard({
   });
 
   return (
-    <View style={{ height: height, ...styles.card }}>
+    <View style={{ height, width, ...styles.card }}>
       {/* Gradient to make the description readable */}
       <LinearGradient
         style={styles.gradient}

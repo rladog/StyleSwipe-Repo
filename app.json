@@ -28,7 +28,18 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Satoshi-Regular.otf",
+            "./assets/fonts/Satoshi-Black.otf",
+            "./assets/fonts/Satoshi-Bold.otf",
+            "./assets/fonts/Satoshi-Light.otf"
+          ]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

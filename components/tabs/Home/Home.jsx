@@ -1,6 +1,14 @@
 import { StyleSheet, View, Text } from "react-native";
+import { useFonts } from "expo-font";
 
 export default function Home() {
+  const [fontsLoaded] = useFonts({
+    "Satoshi-Black": require("@/assets/fonts/Satoshi-Black.otf"),
+    "Satoshi-Bold": require("@/assets/fonts/Satoshi-Bold.otf"),
+    "Satoshi-Regular": require("@/assets/fonts/Satoshi-Regular.otf"),
+    "Satoshi-Light": require("@/assets/fonts/Satoshi-Light.otf"),
+  });
+
   return (
     <View style={styles.container}>
       <View style={styles.headingContainer}>

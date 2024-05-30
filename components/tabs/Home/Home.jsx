@@ -1,6 +1,8 @@
 import { StyleSheet, View, Text } from "react-native";
 import { useFonts } from "expo-font";
 import CardDeck from "@/components/tabs/Home/CardDeck";
+import { useEffect, useState } from "react";
+import { supabase } from "@/utils/supabase";
 
 export default function Home() {
   const [fontsLoaded] = useFonts({
@@ -10,12 +12,42 @@ export default function Home() {
     "Satoshi-Light": require("@/assets/fonts/Satoshi-Light.otf"),
   });
 
+  //Store cards retrieved from database as state
+  const [cards, setCards] = useState(null);
+
+  //Use useEffect to get the cards from the database
+  //when the page first loads
+  useEffect(() => {
+    const getCards = async () => {
+      //Get all the rows from table "items" in the database
+      const { data, error } = await supabase.from("items").select();
+
+      //If there was an error fetching the data
+      //report the user of the error
+      if (error) {
+        alert("Error while fetching database");
+        console.log(error);
+        return;
+      }
+
+      //If data was successfully retrieved,
+      //set the card to the retrieved data
+      //which is an array containing each row as an object
+      if (data) {
+        setCards(data);
+        console.log(data[0]);
+        return;
+      }
+    };
+    getCards();
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.headingContainer}>
         <Text style={styles.titleText}>Swipe!</Text>
       </View>
-      <CardDeck />
+      {cards && <CardDeck cards={cards} />}
     </View>
   );
 }

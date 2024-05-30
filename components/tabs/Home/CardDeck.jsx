@@ -10,6 +10,8 @@ export default function CardDeck() {
     <Swiper
       cards={cards}
       renderCard={(card) => (
+        //Render the cards using the ItemCard component
+        //Gradient height should be a fraction between 0 and 1 based on how fast the gradient should start
         <ItemCard
           height={"90%"}
           width={"100"}

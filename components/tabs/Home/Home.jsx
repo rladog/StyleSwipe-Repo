@@ -1,5 +1,6 @@
 import { StyleSheet, View, Text } from "react-native";
 import { useFonts } from "expo-font";
+import CardDeck from "@/components/tabs/Home/CardDeck";
 
 export default function Home() {
   const [fontsLoaded] = useFonts({
@@ -14,6 +15,7 @@ export default function Home() {
       <View style={styles.headingContainer}>
         <Text style={styles.titleText}>Swipe!</Text>
       </View>
+      <CardDeck />
     </View>
   );
 }

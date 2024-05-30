@@ -3,7 +3,7 @@ import { useState } from "react";
 import { StyleSheet } from "react-native";
 import ItemCard from "../_common/ItemCard";
 
-export default function CardDeck() {
+export default function CardDeck({ swipeRightFn }) {
   const [cards, setCards] = useState([]);
 
   return (
@@ -25,6 +25,7 @@ export default function CardDeck() {
       )}
       cardVerticalMargin={0}
       cardHorizontalMargin={0}
+      onSwipedRight={(index) => swipeRightFn(index)}
     />
   );
 }

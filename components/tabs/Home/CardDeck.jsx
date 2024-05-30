@@ -26,6 +26,7 @@ export default function CardDeck({ swipeRightFn }) {
       cardVerticalMargin={0}
       cardHorizontalMargin={0}
       onSwipedRight={(index) => swipeRightFn(index)}
+      verticalSwipe={false}
     />
   );
 }

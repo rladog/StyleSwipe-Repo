@@ -91,5 +91,6 @@ const styles = StyleSheet.create({
     fontFamily: "Satoshi-Bold",
     color: "white",
     textAlign: "center",
+    marginBottom: "3%",
   },
 });

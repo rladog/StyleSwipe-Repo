@@ -5,55 +5,32 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/utils/supabase";
 import useFontImport from "@/hooks/useFontImport";
 
-export default function Home() {
+export default function Home({ cardProp }) {
   const { fontsReady } = useFontImport();
   //Store cards retrieved from database as state
-  const [cards, setCards] = useState(null);
-
-  //Use useEffect to get the cards from the database
-  //when the page first loads
-  useEffect(() => {
-    const getCards = async () => {
-      //Get all the rows from table "items" in the database
-      const { data, error } = await supabase.from("items").select();
-
-      //If there was an error fetching the data
-      //report the user of the error
-      if (error) {
-        alert("Error while fetching database");
-        console.log(error);
-        return;
-      }
-
-      //If data was successfully retrieved,
-      //set the card to the retrieved data
-      //which is an array containing each row as an object
-      if (data) {
-        setCards(data);
-        console.log(data[0]);
-        return;
-      }
-    };
-    getCards();
-  }, []);
+  const [cards, setCards] = useState(cardProp);
 
   if (!fontsReady) {
     return null; // Render nothing while fonts are loading
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.headingContainer}>
-        <Text style={styles.titleText}>Swipe!</Text>
-      </View>
+    <>
       {cards && (
-        <CardDeck
-          cards={cards}
-          swipeRightFn={() => null}
-          swipeLeftFn={() => null}
-        />
+        <View style={styles.container}>
+          <View style={styles.headingContainer}>
+            <Text style={styles.titleText}>Swipe!</Text>
+          </View>
+          {cards && (
+            <CardDeck
+              cards={cards}
+              swipeRightFn={() => null}
+              swipeLeftFn={() => null}
+            />
+          )}
+        </View>
       )}
-    </View>
+    </>
   );
 }
 

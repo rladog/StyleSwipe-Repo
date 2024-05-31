@@ -3,15 +3,10 @@ import { useFonts } from "expo-font";
 import CardDeck from "@/components/tabs/Home/CardDeck";
 import { useEffect, useState } from "react";
 import { supabase } from "@/utils/supabase";
+import useFontImport from "@/hooks/useFontImport";
 
 export default function Home() {
-  const [fontsLoaded] = useFonts({
-    "Satoshi-Black": require("@/assets/fonts/Satoshi-Black.otf"),
-    "Satoshi-Bold": require("@/assets/fonts/Satoshi-Bold.otf"),
-    "Satoshi-Regular": require("@/assets/fonts/Satoshi-Regular.otf"),
-    "Satoshi-Light": require("@/assets/fonts/Satoshi-Light.otf"),
-  });
-
+  const { fontsReady } = useFontImport();
   //Store cards retrieved from database as state
   const [cards, setCards] = useState(null);
 
@@ -41,6 +36,10 @@ export default function Home() {
     };
     getCards();
   }, []);
+
+  if (!fontsReady) {
+    return null; // Render nothing while fonts are loading
+  }
 
   return (
     <View style={styles.container}>

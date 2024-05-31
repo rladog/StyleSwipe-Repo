@@ -16,6 +16,6 @@ export default async function getCollections(session) {
   }
 
   if (data) {
-    return data;
+    return data?.collection_obj;
   }
 }

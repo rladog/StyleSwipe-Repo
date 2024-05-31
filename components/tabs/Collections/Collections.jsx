@@ -1,8 +1,15 @@
 import { StyleSheet, View, Text } from "react-native";
 import CollectionItem from "./CollectionItem";
 import { useState } from "react";
+import useFontImport from "@/hooks/useFontImport";
 
-export default function Collections({ collections }) {
+export default function Collections({ collectionsProp }) {
+  const { fontsReady } = useFontImport();
+
+  if (!fontsReady) {
+    return null; // Render nothing while fonts are loading
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.headingContainer}>

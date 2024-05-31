@@ -28,7 +28,7 @@ export default function Collections({ collectionsProp }) {
             {Object.entries(collections).map((keyValArray) => (
               <CollectionItem
                 key={keyValArray[0]}
-                href={`/collections/${keyValArray[0]}`}
+                href={`/collection/${keyValArray[0]}`}
                 name={keyValArray[0]}
               />
             ))}

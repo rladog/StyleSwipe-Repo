@@ -19,8 +19,8 @@ export default function SingleCollection({ collectionName, collectionData }) {
           height={"100%"}
           width={"100%"}
           gradientHeight={0.5}
-          imageURL={item.imageURL}
-          name={item.name}
+          imageURL={item.ImageURL}
+          name={item.ProductTitle}
           nameSize={12}
         />
       </View>

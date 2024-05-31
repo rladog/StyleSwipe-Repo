@@ -3,7 +3,7 @@ import { StyleSheet, FlatList, View, Text } from "react-native";
 import ItemCard from "@/components/tabs/_common/ItemCard";
 import "react-native-url-polyfill/auto";
 
-export default function Collection({ collectionName, collectionData }) {
+export default function SingleCollection({ collectionName, collectionData }) {
   const [collection, setCollection] = useState(collectionData);
 
   const renderItem = ({ item }) => {

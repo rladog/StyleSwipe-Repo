@@ -30,6 +30,18 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="collections"
+        options={{
+          title: "Collections",
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "file-tray-stacked" : "file-tray-stacked-outline"}
+              color={color}
+            />
+          ),
+        }}
+      />
     </Tabs>
   );
 }

@@ -30,6 +30,7 @@ export default function CardDeck({ cards, swipeRightFn }) {
       //if the card is swiped right
       //with the given index of the card
       onSwipedRight={(index) => swipeRightFn(index)}
+      containerStyle={styles.swiperContainer}
     />
   );
 }

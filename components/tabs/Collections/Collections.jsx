@@ -5,6 +5,12 @@ import useFontImport from "@/hooks/useFontImport";
 
 export default function Collections({ collectionsProp }) {
   const { fontsReady } = useFontImport();
+  //Store cards retrieved from database as state
+  const [collections, setCollections] = useState(collectionsProp);
+
+  useEffect(() => {
+    setCards(collectionsProp);
+  }, [collectionsProp]);
 
   if (!fontsReady) {
     return null; // Render nothing while fonts are loading

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { StyleSheet } from "react-native";
 import ItemCard from "../_common/ItemCard";
 
-export default function CardDeck({ cards, swipeRightFn }) {
+export default function CardDeck({ cards, swipeRightFn, swipeLeftFn }) {
   return (
     <Swiper
       cards={cards}
@@ -30,6 +30,7 @@ export default function CardDeck({ cards, swipeRightFn }) {
       //if the card is swiped right
       //with the given index of the card
       onSwipedRight={(index) => swipeRightFn(index)}
+      onSwipedLeft={(index) => swipeLeftFn(index)}
       containerStyle={styles.swiperContainer}
     />
   );

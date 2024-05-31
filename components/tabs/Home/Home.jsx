@@ -47,7 +47,7 @@ export default function Home() {
       <View style={styles.headingContainer}>
         <Text style={styles.titleText}>Swipe!</Text>
       </View>
-      {cards && <CardDeck cards={cards} />}
+      {cards && <CardDeck cards={cards} swipeRightFn={() => null} />}
     </View>
   );
 }

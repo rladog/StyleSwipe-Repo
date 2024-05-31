@@ -1,10 +1,22 @@
 import { StyleSheet, View, Text } from "react-native";
+import CollectionItem from "./CollectionItem";
+import { useState } from "react";
 
-export default function Collections() {
+export default function Collections({ collections }) {
   return (
     <View style={styles.container}>
       <View style={styles.headingContainer}>
         <Text style={styles.titleText}>Collections</Text>
+      </View>
+
+      <View style={styles.collectionsHolder}>
+        {Object.entries(collections).map((keyValArray) => (
+          <CollectionItem
+            key={keyValArray[0]}
+            href={`/collections/${keyValArray[0]}`}
+            name={keyValArray[0]}
+          />
+        ))}
       </View>
     </View>
   );

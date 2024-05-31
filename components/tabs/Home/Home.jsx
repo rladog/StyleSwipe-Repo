@@ -10,6 +10,10 @@ export default function Home({ cardProp }) {
   //Store cards retrieved from database as state
   const [cards, setCards] = useState(cardProp);
 
+  useEffect(() => {
+    setCards(cardProp);
+  }, [cardProp]);
+
   if (!fontsReady) {
     return null; // Render nothing while fonts are loading
   }

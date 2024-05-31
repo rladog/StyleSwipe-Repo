@@ -20,6 +20,20 @@ export default async function getSingleCollection(session, collectionName) {
 
     if (collection == undefined || collection == null) return null;
 
-    return collection;
+    const { data: idArray, error } = await supabase
+      .from("items")
+      .select()
+      .in("ProductId", collection);
+
+    if (error) {
+      alert("Error fetching collections");
+      console.log(error);
+      return null;
+    }
+
+    if (idArray) {
+      console.log(idArray);
+      return idArray;
+    }
   }
 }

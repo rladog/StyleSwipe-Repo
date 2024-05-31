@@ -1,0 +1,84 @@
+import { useState, useEffect, useCallback } from "react";
+import { StyleSheet, FlatList, View, Text } from "react-native";
+import ItemCard from "@/components/tabs/_common/ItemCard";
+import "react-native-url-polyfill/auto";
+
+export default function Collection({ collectionName, collectionData }) {
+  const [collection, setCollection] = useState(collectionData);
+
+  const renderItem = ({ item }) => {
+    return (
+      <View style={styles.item}>
+        {/* <Image style={styles.itemImage} source={{ uri: item.ImageURL }}></Image>
+        <Text style={styles.itemName}>{item.ProductTitle}</Text> */}
+        <ItemCard
+          height={"100%"}
+          width={"100%"}
+          gradientHeight={0.5}
+          imageURL={item.imageURL}
+          name={item.name}
+          nameSize={12}
+        />
+      </View>
+    );
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.headingContainer}>
+        <Text style={styles.titleText}>{collectionName}</Text>
+      </View>
+      <FlatList
+        data={collectionData}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        numColumns={2}
+        contentContainerStyle={styles.listContainer}
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "rgb(255, 255, 247)",
+  },
+  headingContainer: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: "5%",
+    zIndex: 14,
+    height: "14%",
+    textAlignVertical: "center",
+    alignItems: "flex-end",
+    paddingLeft: "4%",
+    marginBottom: "4%",
+    textAlignVertical: "bottom",
+  },
+  titleText: {
+    fontFamily: "Satoshi-Bold",
+    fontSize: 40,
+  },
+  listContainer: {
+    paddingHorizontal: "4%",
+  },
+  item: {
+    marginHorizontal: "3%",
+    width: "45%",
+    height: 200,
+    borderRadius: 20,
+    borderWidth: 3,
+    borderColor: "black",
+    marginVertical: 15,
+    alignItems: "center",
+    overflow: "hidden",
+  },
+  itemImage: {
+    width: "100%",
+    height: "100%",
+  },
+});

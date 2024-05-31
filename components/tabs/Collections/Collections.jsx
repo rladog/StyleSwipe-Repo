@@ -59,4 +59,11 @@ const styles = StyleSheet.create({
     fontFamily: "Satoshi-Black",
     fontSize: 40,
   },
+  collectionsHolder: {
+    flex: 1,
+    paddingHorizontal: "6%",
+    flexWrap: "wrap",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
 });

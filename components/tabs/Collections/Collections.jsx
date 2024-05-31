@@ -17,21 +17,25 @@ export default function Collections({ collectionsProp }) {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.headingContainer}>
-        <Text style={styles.titleText}>Collections</Text>
-      </View>
+    <>
+      {collections && (
+        <View style={styles.container}>
+          <View style={styles.headingContainer}>
+            <Text style={styles.titleText}>Collections</Text>
+          </View>
 
-      <View style={styles.collectionsHolder}>
-        {Object.entries(collections).map((keyValArray) => (
-          <CollectionItem
-            key={keyValArray[0]}
-            href={`/collections/${keyValArray[0]}`}
-            name={keyValArray[0]}
-          />
-        ))}
-      </View>
-    </View>
+          <View style={styles.collectionsHolder}>
+            {Object.entries(collections).map((keyValArray) => (
+              <CollectionItem
+                key={keyValArray[0]}
+                href={`/collections/${keyValArray[0]}`}
+                name={keyValArray[0]}
+              />
+            ))}
+          </View>
+        </View>
+      )}
+    </>
   );
 }
 

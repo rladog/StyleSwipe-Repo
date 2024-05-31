@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text, Image } from "react-native";
 import { useFonts } from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
+import useFontImport from "@/hooks/useFontImport";
 
 export default function ItemCard({
   height,
@@ -10,13 +11,11 @@ export default function ItemCard({
   name,
   nameSize,
 }) {
-  //Import fonts to be used in case it's not loaded by app.json
-  //fontsLoaded is a boolean variable for if the fonts are loaded or not
-  const [fontsLoaded] = useFonts({
-    "Satoshi-Bold": require("@/assets/fonts/Satoshi-Bold.otf"),
-    "Satoshi-Regular": require("@/assets/fonts/Satoshi-Regular.otf"),
-    "Satoshi-Light": require("@/assets/fonts/Satoshi-Light.otf"),
-  });
+  const { fontsReady } = useFontImport();
+
+  if (!fontsReady) {
+    return null; // Render nothing while fonts are loading
+  }
 
   return (
     <View style={{ height, width, ...styles.card }}>

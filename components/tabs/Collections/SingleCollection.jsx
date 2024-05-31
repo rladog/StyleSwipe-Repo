@@ -6,6 +6,10 @@ import "react-native-url-polyfill/auto";
 export default function SingleCollection({ collectionName, collectionData }) {
   const [collection, setCollection] = useState(collectionData);
 
+  useEffect(() => {
+    setCollection(collectionData);
+  }, [collectionName, collectionData]);
+
   const renderItem = ({ item }) => {
     return (
       <View style={styles.item}>
@@ -29,9 +33,9 @@ export default function SingleCollection({ collectionName, collectionData }) {
         <Text style={styles.titleText}>{collectionName}</Text>
       </View>
       <FlatList
-        data={collectionData}
+        data={collection}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.ProductId}
         numColumns={2}
         contentContainerStyle={styles.listContainer}
       />

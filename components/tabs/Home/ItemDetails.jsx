@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Image, Pressable } from "react-native";
+import { StyleSheet, View, Text, Image, Modal, Pressable } from "react-native";
 import useFontImport from "@/hooks/useFontImport";
 import DetailedItemCard from "../_common/DetailedItemCard";
 
@@ -27,7 +27,7 @@ export default function ItemDetails({ closeFn, addFn, itemObj }) {
           gradientHeight={0.6}
           imageURL={itemObj.ImageURL}
           name={itemObj.ProductTitle}
-          na
+          nameSize={40}
           gender={itemObj.Gender}
           genderSize={20}
           type={itemObj.ProductType}

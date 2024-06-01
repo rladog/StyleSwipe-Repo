@@ -31,7 +31,7 @@ export default async function addItemToCollection(
       console.log(error);
       return false;
     }
-
+    if (collection.find((id) => id == itemId)) return true;
     collection.push(itemId);
 
     collection_obj = { collection, ...collection_obj };

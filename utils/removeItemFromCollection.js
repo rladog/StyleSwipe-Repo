@@ -1,6 +1,6 @@
 import { supabase } from "@/utils/supabase";
 
-export default async function addItemToCollection(
+export default async function removeItemFromCollection(
   session,
   itemId,
   collectionName

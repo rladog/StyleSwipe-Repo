@@ -47,7 +47,7 @@ export default async function removeItemFromCollection(
 
     const { error } = await supabase.select("collections").upsert(updates);
     if (error) {
-      alert(`Error saving item #${itemId} to ${collectionName}`);
+      alert(`Error removing items from ${collectionName}`);
       console.log(error);
       return false;
     }

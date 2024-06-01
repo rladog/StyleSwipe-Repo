@@ -1,12 +1,30 @@
 import { StyleSheet, View, Text, Image, Modal, Pressable } from "react-native";
 import useFontImport from "@/hooks/useFontImport";
 import DetailedItemCard from "../_common/DetailedItemCard";
+import CollectionMenu from "@/components/tabs/_common/CollectionMenu";
+import getCollections from "@/utils/getCollections";
+import createCollection from "@/utils/createCollection";
+import addItemToCollection from "@/utils/addItemToCollection";
+import useSession from "@/hooks/useSession";
+import { useEffect, useState } from "react";
+import Auth from "../_common/Auth";
 
-export default function ItemDetails({ closeFn, addFn, itemObj, isOpen }) {
+export default function ItemDetails({ closeFn, itemObj, isOpen }) {
   const { fontsReady } = useFontImport();
+  const [showCollectionMenu, setShowCollectionMenu] = useState(false);
+  const { sessionExists, session } = useSession();
+  const [collections, setCollections] = useState([{ "Liked Items": [123] }]);
+
+  useEffect(() => {
+    getCollections(session).then((collections) => setCollections(collections));
+  }, [!sessionExists]);
 
   if (!fontsReady) {
     return null; // Render nothing while fonts are loading
+  }
+
+  if (!sessionExists) {
+    return <Auth />;
   }
 
   return (
@@ -18,7 +36,10 @@ export default function ItemDetails({ closeFn, addFn, itemObj, isOpen }) {
               <Pressable style={styles.closePressable} onPress={closeFn}>
                 <Text style={styles.closeText}>Close</Text>
               </Pressable>
-              <Pressable style={styles.addPressable} onPress={addFn}>
+              <Pressable
+                style={styles.addPressable}
+                onPress={() => setShowCollectionMenu(true)}
+              >
                 <Text style={styles.addText}>{"Add to \ncollection"}</Text>
               </Pressable>
             </View>
@@ -40,6 +61,18 @@ export default function ItemDetails({ closeFn, addFn, itemObj, isOpen }) {
           </View>
         </Modal>
       )}
+      <CollectionMenu
+        visible={showCollectionMenu}
+        itemId={itemObj.ProductId}
+        onClose={() => setShowCollectionMenu(false)}
+        addToCollectionFn={(itemId, collectionName) =>
+          addItemToCollection(session, itemId, collectionName)
+        }
+        newCollectionFn={(collectionName) =>
+          createCollection(session, collectionName)
+        }
+        collectionsObj={collections}
+      />
     </>
   );
 }

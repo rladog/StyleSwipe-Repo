@@ -29,8 +29,8 @@ export default function CardDeck({ cards, swipeRightFn, swipeLeftFn }) {
       //Call the function passed in as prop
       //if the card is swiped right
       //with the given index of the card
-      onSwipedRight={(index) => swipeRightFn(index)}
-      onSwipedLeft={(index) => swipeLeftFn(index)}
+      onSwipedRight={(index) => swipeRightFn(cards[index])}
+      onSwipedLeft={(index) => swipeLeftFn(cards[index])}
       containerStyle={styles.swiperContainer}
     />
   );

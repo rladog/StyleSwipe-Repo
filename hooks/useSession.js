@@ -17,7 +17,6 @@ export default function useSession() {
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
-  }, [session]);
-
+  }, []);
   return { sessionExists: session != null, session };
 }

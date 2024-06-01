@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "my-app",
-    "slug": "my-app",
+    "name": "StyleSwipe",
+    "slug": "StyleSwipe",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.josek90.StyleSwipe"
     },
     "web": {
       "bundler": "metro",
@@ -32,8 +33,8 @@
         "expo-font",
         {
           "fonts": [
-            ".assets/fonts/Satoshi-Regular.otf",
-            ".assets/fonts/Satoshi-Black.otf",
+            "./assets/fonts/Satoshi-Regular.otf",
+            "./assets/fonts/Satoshi-Black.otf",
             "./assets/fonts/Satoshi-Bold.otf",
             "./assets/fonts/Satoshi-Light.otf"
           ]
@@ -42,6 +43,20 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "42552b07-7571-4e84-9f16-7950731d19d3"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/42552b07-7571-4e84-9f16-7950731d19d3"
     }
   }
 }

@@ -9,7 +9,8 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-
+app/\(tabs\)/test*
+testFiles/
 # macOS
 .DS_Store
 

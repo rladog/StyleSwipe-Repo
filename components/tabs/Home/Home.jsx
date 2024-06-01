@@ -28,8 +28,9 @@ export default function Home({ cardProp }) {
           {cards && (
             <CardDeck
               cards={cards}
-              swipeRightFn={() => null}
-              swipeLeftFn={() => null}
+              swipeRightFn={(item) => null}
+              swipeLeftFn={(item) => null}
+              doubleTapFn={(item) => null}
             />
           )}
         </View>

@@ -1,6 +1,6 @@
 import { supabase } from "@/utils/supabase";
 
-export default async function addItemToCollection(session, collectionName) {
+export default async function createCollection(session, collectionName) {
   if (!session) return false;
 
   let userId = session.user.id;

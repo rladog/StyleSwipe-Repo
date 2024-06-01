@@ -9,6 +9,7 @@ export default function DetailedItemCard({
   gradientHeight,
   imageURL,
   name,
+  nameSize,
   gender,
   genderSize,
   type,

@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, Image, Modal, Pressable } from "react-native";
 import useFontImport from "@/hooks/useFontImport";
 import DetailedItemCard from "../_common/DetailedItemCard";
 
-export default function ItemDetails({ closeFn, addFn, itemObj }) {
+export default function ItemDetails({ closeFn, addFn, itemObj, isOpen }) {
   const { fontsReady } = useFontImport();
 
   if (!fontsReady) {
@@ -10,33 +10,37 @@ export default function ItemDetails({ closeFn, addFn, itemObj }) {
   }
 
   return (
-    <Modal>
-      <View style={styles.card}>
-        <View style={styles.buttonHolder}>
-          <Pressable style={styles.closePressable} onPress={closeFn}>
-            <Text style={styles.closeText}>Close</Text>
-          </Pressable>
-          <Pressable style={styles.addPressable} onPress={addFn}>
-            <Text style={styles.addText}>{"Add to \ncollection"}</Text>
-          </Pressable>
-        </View>
+    <>
+      {isOpen && (
+        <Modal>
+          <View style={styles.card}>
+            <View style={styles.buttonHolder}>
+              <Pressable style={styles.closePressable} onPress={closeFn}>
+                <Text style={styles.closeText}>Close</Text>
+              </Pressable>
+              <Pressable style={styles.addPressable} onPress={addFn}>
+                <Text style={styles.addText}>{"Add to \ncollection"}</Text>
+              </Pressable>
+            </View>
 
-        <DetailedItemCard
-          height={"100%"}
-          width={"100%"}
-          gradientHeight={0.6}
-          imageURL={itemObj.ImageURL}
-          name={itemObj.ProductTitle}
-          nameSize={40}
-          gender={itemObj.Gender}
-          genderSize={20}
-          type={itemObj.ProductType}
-          typeSize={20}
-          subtype={itemObj.SubCategory}
-          subtypeSize={18}
-        />
-      </View>
-    </Modal>
+            <DetailedItemCard
+              height={"100%"}
+              width={"100%"}
+              gradientHeight={0.6}
+              imageURL={itemObj.ImageURL}
+              name={itemObj.ProductTitle}
+              nameSize={40}
+              gender={itemObj.Gender}
+              genderSize={20}
+              type={itemObj.ProductType}
+              typeSize={20}
+              subtype={itemObj.SubCategory}
+              subtypeSize={18}
+            />
+          </View>
+        </Modal>
+      )}
+    </>
   );
 }
 

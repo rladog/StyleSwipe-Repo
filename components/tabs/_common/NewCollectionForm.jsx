@@ -8,7 +8,7 @@ import {
   Pressable,
 } from "react-native";
 
-const NewCollectionForm = ({ visible, onClose, onSubmit }) => {
+export default function NewCollectionForm({ visible, onClose, onSubmit }) {
   const [collectionName, setCollectionName] = useState("");
 
   return (
@@ -16,7 +16,7 @@ const NewCollectionForm = ({ visible, onClose, onSubmit }) => {
       visible={visible}
       animationType="slide"
       transparent={true}
-      onRequestClose={onClose}
+      onRequestClose={() => onClose()}
     >
       <View style={styles.container}>
         <View style={styles.formContainer}>
@@ -27,10 +27,21 @@ const NewCollectionForm = ({ visible, onClose, onSubmit }) => {
             style={styles.input}
           />
           <View style={styles.buttonContainer}>
-            <Pressable onPress={() => onSubmit(collectionName)}>
+            <Pressable
+              onPress={() => {
+                setCollectionName("");
+                onSubmit(collectionName);
+              }}
+            >
               <Text>Create Collection</Text>
             </Pressable>
-            <Pressable onPress={onClose} color="red">
+            <Pressable
+              onPress={() => {
+                setCollectionName("");
+                onClose();
+              }}
+              color="red"
+            >
               <Text>Close</Text>
             </Pressable>
           </View>
@@ -38,7 +49,7 @@ const NewCollectionForm = ({ visible, onClose, onSubmit }) => {
       </View>
     </Modal>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

@@ -30,7 +30,6 @@ export default function Home({ cardProp }) {
               cards={cards}
               swipeRightFn={(item) => null}
               swipeLeftFn={(item) => null}
-              doubleTapFn={(item) => null}
             />
           )}
         </View>

@@ -1,15 +1,8 @@
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
-import { useFonts } from "expo-font";
-import { LinearGradient } from "expo-linear-gradient";
 import useFontImport from "@/hooks/useFontImport";
 import DetailedItemCard from "../_common/DetailedItemCard";
 
-export default function ItemDetails({
-  closeFn,
-  addFn,
-  itemObj,
-  DetailedItemCard,
-}) {
+export default function ItemDetails({ closeFn, addFn, itemObj }) {
   const { fontsReady } = useFontImport();
 
   if (!fontsReady) {

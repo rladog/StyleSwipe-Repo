@@ -12,9 +12,19 @@ export default function SingleCollection({ collectionName, collectionData }) {
 
   const renderItem = ({ item }) => {
     return (
-      <View style={styles.item}>
-        {/* <Image style={styles.itemImage} source={{ uri: item.ImageURL }}></Image>
-        <Text style={styles.itemName}>{item.ProductTitle}</Text> */}
+      <View
+        style={{
+          marginHorizontal: "3%",
+          width: "45%",
+          height: 200,
+          borderRadius: 20,
+          borderWidth: 3,
+          borderColor: "black",
+          marginVertical: 15,
+          alignItems: "center",
+          overflow: "hidden",
+        }}
+      >
         <ItemCard
           height={"100%"}
           width={"100%"}
@@ -70,17 +80,7 @@ const styles = StyleSheet.create({
   listContainer: {
     paddingHorizontal: "4%",
   },
-  item: {
-    marginHorizontal: "3%",
-    width: "45%",
-    height: 200,
-    borderRadius: 20,
-    borderWidth: 3,
-    borderColor: "black",
-    marginVertical: 15,
-    alignItems: "center",
-    overflow: "hidden",
-  },
+
   itemImage: {
     width: "100%",
     height: "100%",

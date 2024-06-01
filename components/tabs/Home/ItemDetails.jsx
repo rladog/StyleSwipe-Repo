@@ -13,7 +13,7 @@ export default function ItemDetails({ closeFn, itemObj, isOpen }) {
   const { fontsReady } = useFontImport();
   const [showCollectionMenu, setShowCollectionMenu] = useState(false);
   const { sessionExists, session } = useSession();
-  const [collections, setCollections] = useState([{ "Liked Items": [123] }]);
+  const [collections, setCollections] = useState([{}]);
 
   useEffect(() => {
     getCollections(session).then((collections) => setCollections(collections));

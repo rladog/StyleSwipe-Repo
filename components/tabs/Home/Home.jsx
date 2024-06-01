@@ -62,6 +62,8 @@ const styles = StyleSheet.create({
     paddingLeft: "4%",
     marginBottom: "4%",
     textAlignVertical: "bottom",
+    position: "absolute",
+    zIndex: 1,
   },
 
   titleText: {

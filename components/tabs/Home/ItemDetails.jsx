@@ -30,7 +30,7 @@ export default function ItemDetails({ closeFn, itemObj, isOpen }) {
   return (
     <>
       {isOpen && (
-        <Modal>
+        <View style={styles.modal}>
           <View style={styles.card}>
             <View style={styles.buttonHolder}>
               <Pressable style={styles.closePressable} onPress={closeFn}>
@@ -59,7 +59,7 @@ export default function ItemDetails({ closeFn, itemObj, isOpen }) {
               subtypeSize={18}
             />
           </View>
-        </Modal>
+        </View>
       )}
       <CollectionMenu
         visible={showCollectionMenu}
@@ -78,6 +78,13 @@ export default function ItemDetails({ closeFn, itemObj, isOpen }) {
 }
 
 const styles = StyleSheet.create({
+  modal: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "white",
+    position: "absolute",
+    zIndex: 3,
+  },
   card: {
     justifyContent: "flex-end",
     alignItems: "center",

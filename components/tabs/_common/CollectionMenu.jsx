@@ -41,6 +41,7 @@ export default function CollectionMenu({
       const newCollections = { ...collections, [collectionName]: [] };
       setCollections(newCollections);
       newCollectionFn(collectionName);
+      addToCollectionFn(itemId, collectionName);
     }
     setModalVisible(false);
   };

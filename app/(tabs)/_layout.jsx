@@ -14,6 +14,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: false,
         tabBarStyle: {
+          backgroundColor: "rgb(255, 255, 247)",
           height: "10%",
         },
       }}

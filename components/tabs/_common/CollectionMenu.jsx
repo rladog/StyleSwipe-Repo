@@ -47,71 +47,84 @@ export default function CollectionMenu({
   };
 
   return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={visible}
-      onRequestClose={onClose}
-    >
-      <View style={styles.container}>
-        <View style={styles.menuContainer}>
-          <View style={styles.menuTitleContainer}>
-            <Text style={styles.menuTitleText}>
-              Choose collections to add to
-            </Text>
+    // <Modal
+    //   animationType="slide"
+    //   transparent={true}
+    //   visible={visible}
+    //   onRequestClose={onClose}
+    // >
+    <>
+      {visible && (
+        <View style={styles.modal}>
+          <View style={styles.container}>
+            <View style={styles.menuContainer}>
+              <View style={styles.menuTitleContainer}>
+                <Text style={styles.menuTitleText}>
+                  Choose collections to add to
+                </Text>
+              </View>
+              <View style={styles.listContainer}>
+                <FlatList
+                  data={collections ? Object.keys(collections) : []}
+                  keyExtractor={(item) => item}
+                  renderItem={({ item }) => (
+                    <TouchableOpacity
+                      style={{
+                        width: "100%",
+                        padding: 10,
+                        marginVertical: 8,
+                        backgroundColor: "rgb(255, 255, 247)",
+                        borderWidth: 2,
+                        borderRadius: 10,
+                      }}
+                      onPress={() => addItemToCollection(itemId, item)}
+                    >
+                      <Text
+                        style={{
+                          color: "black",
+                          fontWeight: "bold",
+                          textAlign: "center",
+                        }}
+                      >
+                        {item}
+                      </Text>
+                    </TouchableOpacity>
+                  )}
+                  ListFooterComponent={
+                    <Pressable
+                      style={styles.newButton}
+                      onPress={() => setModalVisible(true)}
+                    >
+                      <Text style={styles.newText}>New Collection</Text>
+                    </Pressable>
+                  }
+                />
+              </View>
+              <Pressable onPress={onClose} style={styles.closeButton}>
+                <Text style={styles.closeText}>Close</Text>
+              </Pressable>
+            </View>
           </View>
-          <View style={styles.listContainer}>
-            <FlatList
-              data={collections ? Object.keys(collections) : []}
-              keyExtractor={(item) => item}
-              renderItem={({ item }) => (
-                <TouchableOpacity
-                  style={{
-                    width: "100%",
-                    padding: 10,
-                    marginVertical: 8,
-                    backgroundColor: "rgb(255, 255, 247)",
-                    borderWidth: 2,
-                    borderRadius: 10,
-                  }}
-                  onPress={() => addItemToCollection(itemId, item)}
-                >
-                  <Text
-                    style={{
-                      color: "black",
-                      fontWeight: "bold",
-                      textAlign: "center",
-                    }}
-                  >
-                    {item}
-                  </Text>
-                </TouchableOpacity>
-              )}
-              ListFooterComponent={
-                <Pressable
-                  style={styles.newButton}
-                  onPress={() => setModalVisible(true)}
-                >
-                  <Text style={styles.newText}>New Collection</Text>
-                </Pressable>
-              }
-            />
-          </View>
-          <Pressable onPress={onClose} style={styles.closeButton}>
-            <Text style={styles.closeText}>Close</Text>
-          </Pressable>
+          <NewCollectionForm
+            visible={modalVisible}
+            onClose={() => setModalVisible(false)}
+            onSubmit={(collectionName) => createNewCollection(collectionName)}
+          />
         </View>
-      </View>
-      <NewCollectionForm
-        visible={modalVisible}
-        onClose={() => setModalVisible(false)}
-        onSubmit={(collectionName) => createNewCollection(collectionName)}
-      />
-    </Modal>
+      )}
+    </>
+    // </Modal>
   );
 }
 
 const styles = StyleSheet.create({
+  modal: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "transparent",
+    position: "absolute",
+    zIndex: 5,
+  },
   container: {
     flex: 1,
     justifyContent: "center",

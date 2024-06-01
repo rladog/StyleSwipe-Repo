@@ -17,7 +17,7 @@ export default function ItemDetails({ closeFn, addFn, itemObj }) {
             <Text style={styles.closeText}>Close</Text>
           </Pressable>
           <Pressable style={styles.addPressable} onPress={addFn}>
-            <Text style={styles.addText}>Add to collection</Text>
+            <Text style={styles.addText}>{"Add to \ncollection"}</Text>
           </Pressable>
         </View>
 
@@ -48,19 +48,27 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   buttonHolder: {
-    width: "100%",
+    width: "85%",
     position: "absolute",
-    top: "10%",
+    top: "9%",
     zIndex: 1,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   closePressable: {},
   closeText: {
     fontFamily: "Satoshi-Regular",
-    fontSize: 22,
+    fontSize: 26,
+    textShadowColor: "white",
+    textShadowRadius: 5,
   },
   addPressable: {},
   addText: {
     fontFamily: "Satoshi-Regular",
     fontSize: 22,
+    textAlign: "center",
+    textShadowRadius: 6,
   },
 });

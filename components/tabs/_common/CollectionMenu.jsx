@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Modal,
@@ -8,8 +8,7 @@ import {
   Text,
   Pressable,
 } from "react-native";
-
-import NewCollectionForm from "@/components/_common/NewCollectionForm";
+import NewCollectionForm from "@/components/tabs/_common/NewCollectionForm";
 
 export default function CollectionMenu({
   itemId,
@@ -22,13 +21,22 @@ export default function CollectionMenu({
   const [modalVisible, setModalVisible] = useState(false);
   const [collections, setCollections] = useState(collectionsObj);
 
+  useEffect(() => {
+    setCollections(collectionsObj);
+  }, [collectionsObj]);
+
+  if (collectionsObj == null) {
+    console.log(null);
+    return null;
+  }
+
   const addItemToCollection = (itemId, collectionName) => {
     console.log(`Item ${itemId} added to ${collectionName}`);
     addToCollectionFn(itemId, collectionName);
     // Additional logic to update collections state or backend can be implemented here
   };
 
-  const handleNewCollectionSubmit = (collectionName) => {
+  const createNewCollection = (collectionName) => {
     if (collectionName && !collections[collectionName]) {
       const newCollections = { ...collections, [collectionName]: [] };
       setCollections(newCollections);
@@ -53,7 +61,7 @@ export default function CollectionMenu({
           </View>
           <View style={styles.listContainer}>
             <FlatList
-              data={Object.keys(collections)}
+              data={collections ? Object.keys(collections) : []}
               keyExtractor={(item) => item}
               renderItem={({ item }) => (
                 <TouchableOpacity
@@ -96,7 +104,7 @@ export default function CollectionMenu({
       <NewCollectionForm
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
-        onSubmit={newCollectionFn}
+        onSubmit={(collectionName) => createNewCollection(collectionName)}
       />
     </Modal>
   );

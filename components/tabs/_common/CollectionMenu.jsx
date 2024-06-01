@@ -11,14 +11,14 @@ import {
 
 import NewCollectionForm from "@/components/_common/NewCollectionForm";
 
-const CollectionMenu = ({
+export default function CollectionMenu({
   itemId,
   collectionsObj,
   visible,
   onClose,
   addToCollectionFn,
   newCollectionFn,
-}) => {
+}) {
   const [modalVisible, setModalVisible] = useState(false);
   const [collections, setCollections] = useState(collectionsObj);
 
@@ -100,7 +100,7 @@ const CollectionMenu = ({
       />
     </Modal>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

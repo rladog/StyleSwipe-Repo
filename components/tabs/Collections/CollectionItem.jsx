@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     width: "100%",
     textAlign: "center",
     height: "100%",
-    textAlignVertical: "center",
+    paddingTop: 30,
   },
   collectionItemText: {
     width: "100%",

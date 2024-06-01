@@ -36,12 +36,11 @@ export default function CollectionMenu({
     // Additional logic to update collections state or backend can be implemented here
   };
 
-  const createNewCollection = (collectionName) => {
+  const createNewCollection = (itemId, collectionName) => {
     if (collectionName && !collections[collectionName]) {
-      const newCollections = { ...collections, [collectionName]: [] };
+      const newCollections = { ...collections, [collectionName]: [itemId] };
       setCollections(newCollections);
-      newCollectionFn(collectionName);
-      addToCollectionFn(itemId, collectionName);
+      newCollectionFn(itemId, collectionName);
     }
     setModalVisible(false);
   };
@@ -108,7 +107,9 @@ export default function CollectionMenu({
           <NewCollectionForm
             visible={modalVisible}
             onClose={() => setModalVisible(false)}
-            onSubmit={(collectionName) => createNewCollection(collectionName)}
+            onSubmit={(collectionName) =>
+              createNewCollection(itemId, collectionName)
+            }
           />
         </View>
       )}

@@ -3,7 +3,7 @@ import useFontImport from "@/hooks/useFontImport";
 import DetailedItemCard from "../_common/DetailedItemCard";
 import CollectionMenu from "@/components/tabs/_common/CollectionMenu";
 import getCollections from "@/utils/getCollections";
-import createCollection from "@/utils/createCollection";
+import createCollectionAndAdd from "@/utils/createCollectionAndAdd";
 import addItemToCollection from "@/utils/addItemToCollection";
 import useSession from "@/hooks/useSession";
 import { useEffect, useState } from "react";
@@ -69,7 +69,7 @@ export default function ItemDetails({ closeFn, itemObj, isOpen }) {
           addItemToCollection(session, itemId, collectionName)
         }
         newCollectionFn={(collectionName) =>
-          createCollection(session, collectionName)
+          createCollectionAndAdd(session, itemId, collectionName)
         }
         collectionsObj={collections}
       />

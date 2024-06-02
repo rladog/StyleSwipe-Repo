@@ -4,8 +4,9 @@ import CardDeck from "@/components/tabs/Home/CardDeck";
 import { useEffect, useState } from "react";
 import { supabase } from "@/utils/supabase";
 import useFontImport from "@/hooks/useFontImport";
+import addItemToCollection from "@/utils/addItemToCollection";
 
-export default function Home({ cardProp }) {
+export default function Home({ cardProp, session }) {
   const { fontsReady } = useFontImport();
   //Store cards retrieved from database as state
   const [cards, setCards] = useState(cardProp);
@@ -27,8 +28,11 @@ export default function Home({ cardProp }) {
           </View>
           {cards && (
             <CardDeck
+              session={session}
               cards={cards}
-              swipeRightFn={(item) => null}
+              swipeRightFn={(item) =>
+                addItemToCollection(session, item.ProductId, "Liked Items")
+              }
               swipeLeftFn={(item) => null}
             />
           )}

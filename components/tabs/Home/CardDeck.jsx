@@ -4,7 +4,12 @@ import { StyleSheet } from "react-native";
 import ItemCard from "../_common/ItemCard";
 import ItemDetails from "@/components/tabs/Home/ItemDetails";
 
-export default function CardDeck({ cards, swipeRightFn, swipeLeftFn }) {
+export default function CardDeck({
+  cards,
+  swipeRightFn,
+  swipeLeftFn,
+  session,
+}) {
   //State for managing if the card has been double tapped or not
   const [taps, setTaps] = useState(0);
   const [showDetails, setShowDetails] = useState(false);
@@ -64,6 +69,7 @@ export default function CardDeck({ cards, swipeRightFn, swipeLeftFn }) {
         closeFn={() => setShowDetails(false)}
         itemObj={cards[currentIndex]}
         isOpen={showDetails}
+        session={session}
       />
     </>
   );

@@ -34,14 +34,12 @@ export default async function addItemToCollection(
     if (collection.find((id) => id == itemId)) return true;
     collection.push(itemId);
 
-    collection_obj = { collection, ...collection_obj };
-
     const updates = {
       user_id: userId,
       collection_obj,
     };
 
-    const { error } = await supabase.select("collections").upsert(updates);
+    const { error } = await supabase.from("collections").upsert(updates);
     if (error) {
       alert(`Error saving item #${itemId} to ${collectionName}`);
       console.log(error);

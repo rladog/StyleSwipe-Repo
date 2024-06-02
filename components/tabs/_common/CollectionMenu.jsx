@@ -9,6 +9,7 @@ import {
   Pressable,
 } from "react-native";
 import NewCollectionForm from "@/components/tabs/_common/NewCollectionForm";
+import useFontImport from "@/hooks/useFontImport";
 
 export default function CollectionMenu({
   itemId,
@@ -20,10 +21,15 @@ export default function CollectionMenu({
 }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [collections, setCollections] = useState(collectionsObj);
+  const { fontsReady } = useFontImport();
 
   useEffect(() => {
     setCollections(collectionsObj);
   }, [collectionsObj]);
+
+  if (!fontsReady) {
+    return null; // Render nothing while fonts are loading
+  }
 
   if (collectionsObj == null) {
     console.log(null);
@@ -83,6 +89,7 @@ export default function CollectionMenu({
                           color: "black",
                           fontWeight: "bold",
                           textAlign: "center",
+                          fontFamily: "Satoshi-Regular",
                         }}
                       >
                         {item}
@@ -170,6 +177,7 @@ const styles = StyleSheet.create({
   },
   newText: {
     textAlign: "center",
+    fontFamily: "Satoshi-Bold",
   },
   closeButton: {
     marginBottom: "-10%",
@@ -181,5 +189,6 @@ const styles = StyleSheet.create({
   },
   closeText: {
     textAlign: "center",
+    fontFamily: "Satoshi-Bold",
   },
 });

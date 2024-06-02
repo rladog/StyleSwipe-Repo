@@ -5,26 +5,20 @@ import CollectionMenu from "@/components/tabs/_common/CollectionMenu";
 import getCollections from "@/utils/getCollections";
 import createCollectionAndAdd from "@/utils/createCollectionAndAdd";
 import addItemToCollection from "@/utils/addItemToCollection";
-import useSession from "@/hooks/useSession";
 import { useEffect, useState } from "react";
 import Auth from "../_common/Auth";
 
-export default function ItemDetails({ closeFn, itemObj, isOpen }) {
+export default function ItemDetails({ closeFn, itemObj, isOpen, session }) {
   const { fontsReady } = useFontImport();
   const [showCollectionMenu, setShowCollectionMenu] = useState(false);
-  const { sessionExists, session } = useSession();
   const [collections, setCollections] = useState([{}]);
 
   useEffect(() => {
     getCollections(session).then((collections) => setCollections(collections));
-  }, [!sessionExists]);
+  }, []);
 
   if (!fontsReady) {
     return null; // Render nothing while fonts are loading
-  }
-
-  if (!sessionExists) {
-    return <Auth />;
   }
 
   return (
@@ -68,7 +62,7 @@ export default function ItemDetails({ closeFn, itemObj, isOpen }) {
         addToCollectionFn={(itemId, collectionName) =>
           addItemToCollection(session, itemId, collectionName)
         }
-        newCollectionFn={(collectionName) =>
+        newCollectionFn={(itemId, collectionName) =>
           createCollectionAndAdd(session, itemId, collectionName)
         }
         collectionsObj={collections}

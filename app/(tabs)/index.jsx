@@ -13,5 +13,5 @@ export default function HomeScreen() {
   }, []);
 
   if (!sessionExists) return <Auth />;
-  return <Home cardProp={cards} />;
+  return <Home cardProp={cards} session={session} />;
 }

@@ -163,8 +163,10 @@ const styles = StyleSheet.create({
   },
   deleteToggleText: {
     fontFamily: "Satoshi-Bold",
+    fontSize: 22,
   },
   cancelDeleteText: {
     fontFamily: "Satoshi-Bold",
+    fontSize: 22,
   },
 });

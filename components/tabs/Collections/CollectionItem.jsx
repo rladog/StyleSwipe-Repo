@@ -1,7 +1,12 @@
 import { View, Text, StyleSheet } from "react-native";
 import { Link } from "expo-router";
+import useFontImport from "@/hooks/useFontImport";
 
 export default function CollectionItem({ href, name }) {
+  const { fontsReady } = useFontImport();
+  if (!fontsReady) {
+    return null; // Render nothing while fonts are loading
+  }
   return (
     <View style={styles.collectionItem}>
       <Link href={href} style={styles.collectionItemLink}>

@@ -8,6 +8,7 @@ import {
   Pressable,
 } from "react-native";
 import ItemCard from "@/components/tabs/_common/ItemCard"; // Import the ItemCard component
+import useFontImport from "@/hooks/useFontImport";
 
 export default function EditableSingleCollection({
   collectionName,
@@ -17,10 +18,15 @@ export default function EditableSingleCollection({
   const [collection, setCollection] = useState(collectionData);
   const [deleteMode, setDeleteMode] = useState(false);
   const [selectedItems, setSelectedItems] = useState(new Set());
+  const { fontsReady } = useFontImport();
 
   useEffect(() => {
     setCollection(collectionData);
   }, [collectionName, collectionData]);
+
+  if (!fontsReady) {
+    return null; // Render nothing while fonts are loading
+  }
 
   const toggleDeleteMode = () => {
     setDeleteMode(!deleteMode);
@@ -99,16 +105,18 @@ export default function EditableSingleCollection({
         <Text style={styles.titleText}>{collectionName}</Text>
       </View>
       <View style={styles.pressableContainer}>
+        {deleteMode && (
+          <Pressable title="Cancel" onPress={toggleDeleteMode}>
+            <Text style={styles.cancelDeleteText}>Cancel</Text>
+          </Pressable>
+        )}
         <Pressable
           onPress={deleteMode ? handleConfirmDelete : toggleDeleteMode}
         >
-          <Text>{deleteMode ? "Confirm" : "Delete"}</Text>
+          <Text style={styles.deleteToggleText}>
+            {deleteMode ? "Confirm" : "Edit"}
+          </Text>
         </Pressable>
-        {deleteMode && (
-          <Pressable title="Cancel" onPress={toggleDeleteMode}>
-            <Text>Cancel</Text>
-          </Pressable>
-        )}
       </View>
       <FlatList
         data={collection}
@@ -152,5 +160,11 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     paddingHorizontal: "4%",
+  },
+  deleteToggleText: {
+    fontFamily: "Satoshi-Bold",
+  },
+  cancelDeleteText: {
+    fontFamily: "Satoshi-Bold",
   },
 });

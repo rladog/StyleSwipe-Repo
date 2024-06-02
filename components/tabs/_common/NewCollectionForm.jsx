@@ -7,10 +7,15 @@ import {
   Text,
   Pressable,
 } from "react-native";
+import useFontImport from "@/hooks/useFontImport";
 
 export default function NewCollectionForm({ visible, onClose, onSubmit }) {
   const [collectionName, setCollectionName] = useState("");
+  const { fontsReady } = useFontImport();
 
+  if (!fontsReady) {
+    return null; // Render nothing while fonts are loading
+  }
   return (
     <Modal
       visible={visible}
@@ -30,19 +35,19 @@ export default function NewCollectionForm({ visible, onClose, onSubmit }) {
             <Pressable
               onPress={() => {
                 setCollectionName("");
-                onSubmit(collectionName);
-              }}
-            >
-              <Text>Create Collection</Text>
-            </Pressable>
-            <Pressable
-              onPress={() => {
-                setCollectionName("");
                 onClose();
               }}
               color="red"
             >
-              <Text>Close</Text>
+              <Text style={styles.closeFormText}>Close</Text>
+            </Pressable>
+            <Pressable
+              onPress={() => {
+                setCollectionName("");
+                onSubmit(collectionName);
+              }}
+            >
+              <Text style={styles.createCollectionText}>Create</Text>
             </Pressable>
           </View>
         </View>
@@ -76,17 +81,29 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   input: {
-    width: 200,
+    width: 250,
     height: 40,
     marginBottom: 10,
     borderWidth: 1,
     padding: 10,
     borderRadius: 10,
     borderColor: "gray",
+    fontFamily: "Satoshi-Regular",
   },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "100%", // Ensures the buttons are spread across the modal width
+    marginTop: 10,
+    width: 250, // Ensures the buttons are spread across the modal width
+  },
+  createCollectionText: {
+    textAlign: "center",
+    fontFamily: "Satoshi-Bold",
+    fontSize: 24,
+  },
+  closeFormText: {
+    textAlign: "center",
+    fontFamily: "Satoshi-Bold",
+    fontSize: 24,
   },
 });

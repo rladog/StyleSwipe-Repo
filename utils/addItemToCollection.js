@@ -41,7 +41,7 @@ export default async function addItemToCollection(
       collection_obj,
     };
 
-    const { error } = await supabase.select("collections").upsert(updates);
+    const { error } = await supabase.from("collections").upsert(updates);
     if (error) {
       alert(`Error saving item #${itemId} to ${collectionName}`);
       console.log(error);

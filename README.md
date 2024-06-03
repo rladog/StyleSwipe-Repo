@@ -7,4 +7,4 @@ To test our app on your Android or Apple mobile device,
 1. Download **Expo Go** from the Google Play Store or Apple App Store
 2. Scan the QR code below using the **Expo Go app if you're on Android** or using the **Camera app if you're on Apple**
 
-![enter image description here](https://qr.expo.dev/eas-update?slug=exp&projectId=42552b07-7571-4e84-9f16-7950731d19d3&groupId=dd33dab9-d0bb-4aa3-8359-1970e7dc99fe)
+![enter image description here](https://qr.expo.dev/eas-update?slug=exp&projectId=42552b07-7571-4e84-9f16-7950731d19d3&groupId=f0ab567b-a6ed-4eb0-b0f6-63f7e516844a)

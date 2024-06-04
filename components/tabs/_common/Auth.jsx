@@ -51,14 +51,15 @@ export default function Auth() {
       password: password,
     });
 
-    if (error) Alert.alert(error.message);
-    console.log(session.user.id);
-    const { error: insertError } = await supabase
-      .from("collections")
-      .insert({
-        user_id: session.user.id,
-        collection_obj: { "Liked Items": [] },
-      });
+    if (error) {
+      Alert.alert(error.message);
+      setLoading(false);
+      return;
+    }
+    const { error: insertError } = await supabase.from("collections").insert({
+      user_id: session.user.id,
+      collection_obj: { "Liked Items": [] },
+    });
 
     if (insertError) Alert.alert(insertError);
     setLoading(false);

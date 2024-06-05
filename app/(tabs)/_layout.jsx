@@ -42,6 +42,16 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="itemDetail/[itemId]"
+        options={{
+          href: null,
+          title: "Item Detail",
+          tabBarStyle: {
+            display: "none",
+          },
+        }}
+      />
+      <Tabs.Screen
         name="collection/[collectionName]"
         options={{
           href: null,

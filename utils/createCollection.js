@@ -1,14 +1,21 @@
 import { supabase } from "@/utils/supabase";
+import getSession from "@/utils/getSession";
 
-export default async function createCollection(session, collectionName) {
-  if (!session) return false;
+export default async function createCollection(collectionName) {
+  let session = await getSession();
 
-  let userId = session.user.id;
+  if (!session) {
+    alert("Error getting login info");
+    console.log(error);
+    return false;
+  }
+
+  let user_id = session.data.session.user.id;
 
   const { data, error } = await supabase
     .from("collections")
     .select("collection_obj")
-    .eq("user_id", userId)
+    .eq("user_id", user_id)
     .single();
 
   if (error) {
@@ -28,7 +35,7 @@ export default async function createCollection(session, collectionName) {
     collection_obj[collectionName] = [];
 
     const updates = {
-      user_id: session.user.id,
+      user_id: user_id,
       collection_obj,
     };
 

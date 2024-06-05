@@ -60,7 +60,7 @@ export default function ItemDetails({ closeFn, itemObj, isOpen, session }) {
         itemId={itemObj.ProductId}
         onClose={() => setShowCollectionMenu(false)}
         addToCollectionFn={(itemId, collectionName) =>
-          addItemToCollection(session, itemId, collectionName)
+          addItemToCollection(itemId, collectionName)
         }
         newCollectionFn={(itemId, collectionName) =>
           createCollectionAndAdd(session, itemId, collectionName)

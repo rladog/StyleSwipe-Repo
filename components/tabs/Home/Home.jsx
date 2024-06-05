@@ -31,7 +31,7 @@ export default function Home({ cardProp, session }) {
               session={session}
               cards={cards}
               swipeRightFn={(item) =>
-                addItemToCollection(session, item.ProductId, "Liked Items")
+                addItemToCollection(item.ProductId, "Liked Items")
               }
               swipeLeftFn={(item) => null}
             />

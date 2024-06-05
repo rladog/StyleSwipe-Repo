@@ -14,7 +14,7 @@ export default function ItemDetails({ closeFn, itemObj, isOpen, session }) {
   const [collections, setCollections] = useState([{}]);
 
   useEffect(() => {
-    getCollections(session).then((collections) => setCollections(collections));
+    getCollections().then((collections) => setCollections(collections));
   }, []);
 
   if (!fontsReady) {

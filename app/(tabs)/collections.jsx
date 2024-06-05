@@ -11,13 +11,10 @@ export default function CollectionScreen() {
 
   useFocusEffect(
     useCallback(() => {
-      getCollections(session).then((collections) =>
-        setCollections(collections)
-      );
-      console.log("hi");
+      getCollections().then((collections) => setCollections(collections));
     }, [session])
   );
 
-  if (!sessionExists) return <Auth />;
+  // if (!sessionExists) return <Auth />;
   return <Collections collectionsProp={collections} />;
 }

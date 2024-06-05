@@ -15,7 +15,7 @@ export default async function createCollectionAndAdd(itemId, collectionName) {
   const { data, error } = await supabase
     .from("collections")
     .select("collection_obj")
-    .eq("user_id", userId)
+    .eq("user_id", user_id)
     .single();
 
   if (error) {

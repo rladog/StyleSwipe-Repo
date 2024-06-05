@@ -1,30 +1,25 @@
-import ItemDetails from "@/components/tabs/Home/ItemDetails";
-import useSession from "@/hooks/useSession";
-import Auth from "@/components/tabs/_common/Auth";
-import { useCallback, useState } from "react";
+import ItemDetailsPage from "@/components/tabs/Home/ItemDetailsPage";
+import { useCallback, useEffect, useState } from "react";
 import { useFocusEffect, useLocalSearchParams } from "expo-router";
+import getItemObjById from "../../../utils/getItemObjById";
+import redirect from "@/utils/redirect";
 
-export default function Collection() {
-  const { collectionName } = useLocalSearchParams();
-  const { sessionExists, session } = useSession();
-  const [singleCollection, setSingleCollection] = useState(null);
+export default function itemDetail() {
+  const { itemId } = useLocalSearchParams();
+  console.log(itemId);
+  const [itemObj, setItemObj] = useState(null);
 
   useFocusEffect(
     useCallback(() => {
-      getSingleCollection(session, collectionName).then((collection) =>
-        setSingleCollection(collection)
-      );
-    }, [session, collectionName])
+      getItemObjById(itemId).then((obj) => setItemObj(obj));
+    }, [itemId])
   );
 
-  // if (!sessionExists) return <Auth />;
-  return (
-    <EditableSingleCollection
-      collectionName={collectionName}
-      collectionData={singleCollection}
-      deleteFn={(itemId, collectionName) =>
-        removeItemFromCollection(session, itemId, collectionName)
-      }
-    />
-  );
+  function closeDetailsPage() {
+    setItemObj(null);
+    redirect("/");
+  }
+
+  if (!itemObj) return null;
+  return <ItemDetailsPage itemObj={itemObj} closeFn={closeDetailsPage} />;
 }

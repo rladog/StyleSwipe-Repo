@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/utils/supabase";
 import useFontImport from "@/hooks/useFontImport";
 import addItemToCollection from "@/utils/addItemToCollection";
-
+import redirect from "@/utils/redirect";
 export default function Home({ cardProp, session }) {
   const { fontsReady } = useFontImport();
   //Store cards retrieved from database as state
@@ -21,23 +21,22 @@ export default function Home({ cardProp, session }) {
 
   return (
     <>
-      {cards && (
-        <View style={styles.container}>
-          <View style={styles.headingContainer}>
-            <Text style={styles.titleText}>Swipe!</Text>
-          </View>
-          {cards && (
-            <CardDeck
-              session={session}
-              cards={cards}
-              swipeRightFn={(item) =>
-                addItemToCollection(item.ProductId, "Liked Items")
-              }
-              swipeLeftFn={(item) => null}
-            />
-          )}
+      <View style={styles.container}>
+        <View style={styles.headingContainer}>
+          <Text style={styles.titleText}>Swipe!</Text>
         </View>
-      )}
+        {cards && (
+          <CardDeck
+            session={session}
+            cards={cards}
+            swipeRightFn={(item) =>
+              addItemToCollection(item.ProductId, "Liked Items")
+            }
+            swipeLeftFn={(item) => null}
+            doubleTapFn={(item) => redirect(`/itemDetail/${item.ProductId}`)}
+          />
+        )}
+      </View>
     </>
   );
 }

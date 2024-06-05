@@ -19,7 +19,7 @@ export default function Collection() {
     }, [session, collectionName])
   );
 
-  if (!sessionExists) return <Auth />;
+  // if (!sessionExists) return <Auth />;
   return (
     <EditableSingleCollection
       collectionName={collectionName}

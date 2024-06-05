@@ -63,7 +63,7 @@ export default function ItemDetails({ closeFn, itemObj, isOpen, session }) {
           addItemToCollection(itemId, collectionName)
         }
         newCollectionFn={(itemId, collectionName) =>
-          createCollectionAndAdd(session, itemId, collectionName)
+          createCollectionAndAdd(itemId, collectionName)
         }
         collectionsObj={collections}
       />

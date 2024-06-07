@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 import getCards from "@/utils/getCards";
 
 export default function HomeScreen() {
-  const { sessionExists, session } = useSession();
-
   // if (!sessionExists) return <Auth />;
-  return <Profile session={session} />;
+  return <Profile />;
 }

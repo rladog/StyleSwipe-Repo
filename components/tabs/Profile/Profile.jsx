@@ -5,8 +5,7 @@ import useFontImport from "@/hooks/useFontImport";
 
 const cartIcon = require("@/assets/icons/cart-icon.png");
 
-export default function Profile({ session }) {
-  console.log(session);
+export default function Profile() {
   const { fontsReady } = useFontImport();
 
   if (!fontsReady) {

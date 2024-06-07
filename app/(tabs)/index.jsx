@@ -13,5 +13,8 @@ export default function HomeScreen() {
   }, []);
 
   if (!sessionExists) return <Auth />;
+  if (!cards) {
+    return <LoadingScreen loadingText={"Loading collections..."} />;
+  }
   return <Home cardProp={cards} session={session} />;
 }

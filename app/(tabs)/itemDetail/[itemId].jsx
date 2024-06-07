@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useFocusEffect, useLocalSearchParams } from "expo-router";
 import getItemObjById from "../../../utils/getItemObjById";
 import redirect from "@/utils/redirect";
+import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
 
 export default function itemDetail() {
   const { itemId } = useLocalSearchParams();
@@ -20,6 +21,8 @@ export default function itemDetail() {
     redirect("/");
   }
 
-  if (!itemObj) return null;
+  if (!itemObj) {
+    return <LoadingScreen loadingText={"Loading details..."} />;
+  }
   return <ItemDetailsPage itemObj={itemObj} closeFn={closeDetailsPage} />;
 }

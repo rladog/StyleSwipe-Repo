@@ -16,5 +16,8 @@ export default function CollectionScreen() {
   );
 
   // if (!sessionExists) return <Auth />;
+  if (!collections) {
+    return <LoadingScreen loadingText={"Loading collections..."} />;
+  }
   return <Collections collectionsProp={collections} />;
 }

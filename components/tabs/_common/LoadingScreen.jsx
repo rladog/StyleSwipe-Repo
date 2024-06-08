@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   loadingText: {
-    fontSize: 50,
+    fontSize: 28,
     fontFamily: "Satoshi-Light",
     textAlign: "center",
   },

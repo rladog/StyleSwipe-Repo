@@ -1,7 +1,7 @@
 import { supabase } from "@/utils/supabase";
 
 export default async function getNewItemId() {
-  let { data, error } = await supabase
+  let { count, error } = await supabase
     .from("items")
     .select("*", { count: "exact", head: true });
 
@@ -9,6 +9,5 @@ export default async function getNewItemId() {
     console.error("Error:", error);
     return;
   }
-
-  return data.length + 60000;
+  return count + 60000;
 }

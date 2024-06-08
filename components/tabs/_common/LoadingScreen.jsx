@@ -24,5 +24,6 @@ const styles = StyleSheet.create({
   loadingText: {
     fontSize: 50,
     fontFamily: "Satoshi-Light",
+    textAlign: "center",
   },
 });

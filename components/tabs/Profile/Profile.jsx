@@ -34,7 +34,10 @@ export default function Profile() {
         <Pressable style={styles.optionItem}>
           <Text style={styles.optionText}>View my listings</Text>
         </Pressable>
-        <Pressable style={styles.optionItem}>
+        <Pressable
+          style={styles.optionItem}
+          onPress={() => redirect("/listings/newListing")}
+        >
           <Text style={styles.optionText}>Create new listing</Text>
         </Pressable>
         <Pressable style={styles.optionItem}>

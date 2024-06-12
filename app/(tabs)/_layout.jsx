@@ -73,6 +73,13 @@ export default function TabLayout() {
           title: "New Password",
         }}
       />
+      <Tabs.Screen
+        name="listings/newListing"
+        options={{
+          href: null,
+          title: "New Listing",
+        }}
+      />
     </Tabs>
   );
 }

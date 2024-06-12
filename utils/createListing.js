@@ -23,13 +23,11 @@ export default async function createListing(imageURL, name, gender, category) {
     ProductType: category,
   };
 
-  const { collectionError } = await supabase
-    .from("collections")
-    .upsert(itemObj);
+  const { error: itemsError } = await supabase.from("items").upsert(itemObj);
 
-  if (collectionError) {
+  if (itemsError) {
     alert("Error creating listing");
-    console.log(collectionError);
+    console.log(itemsError);
     return false;
   }
 

@@ -4,6 +4,7 @@ import Auth from "@/components/tabs/_common/Auth";
 import { useCallback, useEffect, useState } from "react";
 import getCollections from "@/utils/getCollections";
 import { useFocusEffect } from "expo-router";
+import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
 
 export default function CollectionScreen() {
   const { sessionExists, session } = useSession();

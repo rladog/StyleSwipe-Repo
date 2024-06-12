@@ -1,7 +1,7 @@
 import { supabase } from "@/utils/supabase";
 import getSession from "@/utils/getSession";
-import getNewItemId from "@/getNewItemId";
-import getListings from "@/getListings";
+import getNewItemId from "@/utils/getNewItemId";
+import getListings from "@/utils/getListings";
 export default async function createListing(imageURL, name, gender, category) {
   let session = await getSession();
 

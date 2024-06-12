@@ -59,6 +59,20 @@ export default function TabLayout() {
           title: "Collection",
         }}
       />
+      <Tabs.Screen
+        name="profile/newEmail"
+        options={{
+          href: null,
+          title: "New Email",
+        }}
+      />
+      <Tabs.Screen
+        name="profile/newPassword"
+        options={{
+          href: null,
+          title: "New Password",
+        }}
+      />
     </Tabs>
   );
 }

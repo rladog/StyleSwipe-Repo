@@ -2,6 +2,7 @@ import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import CardDeck from "@/components/tabs/Home/CardDeck";
 import { useEffect, useState } from "react";
 import useFontImport from "@/hooks/useFontImport";
+import redirect from "@/utils/redirect";
 
 const cartIcon = require("@/assets/icons/cart-icon.png");
 
@@ -18,10 +19,16 @@ export default function Profile() {
         <Text style={styles.titleText}>Profile</Text>
       </View>
       <View style={styles.optionsContainer}>
-        <Pressable style={styles.optionItem}>
+        <Pressable
+          style={styles.optionItem}
+          onPress={() => redirect("/profile/newEmail")}
+        >
           <Text style={styles.optionText}>Change email address</Text>
         </Pressable>
-        <Pressable style={styles.optionItem}>
+        <Pressable
+          style={styles.optionItem}
+          onPress={() => redirect("/profile/newPassword")}
+        >
           <Text style={styles.optionText}>Change password</Text>
         </Pressable>
         <Pressable style={styles.optionItem}>

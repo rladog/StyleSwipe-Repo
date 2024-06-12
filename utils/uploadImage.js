@@ -30,8 +30,10 @@ export default async function uploadImage(img) {
     const data = await response.json();
     console.log(data);
     alert("Upload successful");
+    return data;
   } catch (error) {
     console.error("Error uploading image:", error);
     alert("Upload failed");
+    return null;
   }
 }

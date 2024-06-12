@@ -8,6 +8,7 @@ export default function CardDeck({
   cards,
   swipeRightFn,
   swipeLeftFn,
+  doubleTapFn,
   session,
 }) {
   //State for managing if the card has been double tapped or not
@@ -54,7 +55,7 @@ export default function CardDeck({
           //and set the number of taps to zero
           if (taps == 1) {
             setCurrentIndex(index);
-            setShowDetails(true);
+            doubleTapFn(cards[index]);
             setTaps(0);
           }
         }}
@@ -64,12 +65,6 @@ export default function CardDeck({
           if (x > 50 || x < -50) setTaps(0);
         }}
         containerStyle={styles.swiperContainer}
-      />
-      <ItemDetails
-        closeFn={() => setShowDetails(false)}
-        itemObj={cards[currentIndex]}
-        isOpen={showDetails}
-        session={session}
       />
     </>
   );

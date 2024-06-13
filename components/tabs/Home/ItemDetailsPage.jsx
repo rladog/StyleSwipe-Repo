@@ -2,8 +2,6 @@ import { StyleSheet, View, Text, Image, Modal, Pressable } from "react-native";
 import useFontImport from "@/hooks/useFontImport";
 import DetailedItemCard from "@/components/tabs/_common/DetailedItemCard";
 import CollectionMenu from "@/components/tabs/_common/CollectionMenu";
-import createCollectionAndAdd from "@/utils/createCollectionAndAdd";
-import addItemToCollection from "@/utils/addItemToCollection";
 import { useState } from "react";
 import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
 
@@ -57,12 +55,6 @@ export default function ItemDetails({ itemObj, closeFn }) {
         visible={showCollectionMenu}
         itemId={itemObj.ProductId}
         onClose={() => setShowCollectionMenu(false)}
-        addToCollectionFn={(itemId, collectionName) =>
-          addItemToCollection(itemId, collectionName)
-        }
-        newCollectionFn={(itemId, collectionName) =>
-          createCollectionAndAdd(itemId, collectionName)
-        }
       />
     </>
   );

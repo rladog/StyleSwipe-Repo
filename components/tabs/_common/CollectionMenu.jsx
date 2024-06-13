@@ -11,8 +11,10 @@ import {
 import NewCollectionForm from "@/components/tabs/_common/NewCollectionForm";
 import useFontImport from "@/hooks/useFontImport";
 import getCollections from "@/utils/getCollections";
+import addItemToCollection from "@/utils/addItemToCollection";
+import createCollectionAndAdd from "@/utils/createCollectionAndAdd";
 
-export default function CollectionMenu({
+function Menu({
   itemId,
   visible,
   onClose,
@@ -110,6 +112,22 @@ export default function CollectionMenu({
         </View>
       )}
     </>
+  );
+}
+
+export default function CollectionMenu({ itemId, visible, onClose }) {
+  return (
+    <Menu
+      itemId={itemId}
+      visible={visible}
+      onClose={onClose}
+      addToCollectionFn={(itemId, collectionName) =>
+        addItemToCollection(itemId, collectionName)
+      }
+      newCollectionFn={(itemId, collectionName) =>
+        createCollectionAndAdd(itemId, collectionName)
+      }
+    />
   );
 }
 

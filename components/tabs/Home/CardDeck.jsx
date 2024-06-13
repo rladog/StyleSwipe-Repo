@@ -9,7 +9,6 @@ export default function CardDeck({
   swipeRightFn,
   swipeLeftFn,
   doubleTapFn,
-  session,
 }) {
   //State for managing if the card has been double tapped or not
   const [taps, setTaps] = useState(0);

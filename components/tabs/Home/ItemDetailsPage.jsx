@@ -2,20 +2,14 @@ import { StyleSheet, View, Text, Image, Modal, Pressable } from "react-native";
 import useFontImport from "@/hooks/useFontImport";
 import DetailedItemCard from "@/components/tabs/_common/DetailedItemCard";
 import CollectionMenu from "@/components/tabs/_common/CollectionMenu";
-import getCollections from "@/utils/getCollections";
 import createCollectionAndAdd from "@/utils/createCollectionAndAdd";
 import addItemToCollection from "@/utils/addItemToCollection";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
 
 export default function ItemDetails({ itemObj, closeFn }) {
   const { fontsReady } = useFontImport();
   const [showCollectionMenu, setShowCollectionMenu] = useState(false);
-  const [collections, setCollections] = useState([{}]);
-
-  useEffect(() => {
-    getCollections().then((collections) => setCollections(collections));
-  }, []);
 
   if (!fontsReady) {
     return <LoadingScreen loadingText={"Loading..."} />; // Render nothing while fonts are loading
@@ -69,7 +63,6 @@ export default function ItemDetails({ itemObj, closeFn }) {
         newCollectionFn={(itemId, collectionName) =>
           createCollectionAndAdd(itemId, collectionName)
         }
-        collectionsObj={collections}
       />
     </>
   );

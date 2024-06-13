@@ -10,30 +10,25 @@ import {
 } from "react-native";
 import NewCollectionForm from "@/components/tabs/_common/NewCollectionForm";
 import useFontImport from "@/hooks/useFontImport";
+import getCollections from "@/utils/getCollections";
 
 export default function CollectionMenu({
   itemId,
-  collectionsObj,
   visible,
   onClose,
   addToCollectionFn,
   newCollectionFn,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
-  const [collections, setCollections] = useState(collectionsObj);
+  const [collections, setCollections] = useState([{}]);
   const { fontsReady } = useFontImport();
 
   useEffect(() => {
-    setCollections(collectionsObj);
-  }, [collectionsObj]);
+    getCollections().then((collections) => setCollections(collections));
+  }, []);
 
   if (!fontsReady) {
     return null; // Render nothing while fonts are loading
-  }
-
-  if (collectionsObj == null) {
-    console.log(null);
-    return null;
   }
 
   const addItemToCollection = (itemId, collectionName) => {

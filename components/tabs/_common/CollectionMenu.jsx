@@ -14,20 +14,14 @@ import getCollections from "@/utils/getCollections";
 import addItemToCollection from "@/utils/addItemToCollection";
 import createCollectionAndAdd from "@/utils/createCollectionAndAdd";
 
-function Menu({
-  itemId,
-  visible,
-  onClose,
-  addToCollectionFn,
-  newCollectionFn,
-}) {
+function Menu({ itemId, visible, onClose, addToCollectionFn }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [collections, setCollections] = useState([{}]);
   const { fontsReady } = useFontImport();
 
   useEffect(() => {
     getCollections().then((collections) => setCollections(collections));
-  }, []);
+  }, [modalVisible]);
 
   if (!fontsReady) {
     return null; // Render nothing while fonts are loading
@@ -37,15 +31,6 @@ function Menu({
     console.log(`Item ${itemId} added to ${collectionName}`);
     addToCollectionFn(itemId, collectionName);
     // Additional logic to update collections state or backend can be implemented here
-  };
-
-  const createNewCollection = (itemId, collectionName) => {
-    if (collectionName && !collections[collectionName]) {
-      const newCollections = { ...collections, [collectionName]: [itemId] };
-      setCollections(newCollections);
-      newCollectionFn(itemId, collectionName);
-    }
-    setModalVisible(false);
   };
 
   return (
@@ -105,9 +90,7 @@ function Menu({
           <NewCollectionForm
             visible={modalVisible}
             onClose={() => setModalVisible(false)}
-            onSubmit={(collectionName) =>
-              createNewCollection(itemId, collectionName)
-            }
+            onSubmit={() => setModalVisible(false)}
           />
         </View>
       )}

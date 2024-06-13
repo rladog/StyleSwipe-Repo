@@ -8,6 +8,7 @@ import {
   Pressable,
 } from "react-native";
 import useFontImport from "@/hooks/useFontImport";
+import createCollection from "@/utils/createCollection";
 
 export default function NewCollectionForm({ visible, onClose, onSubmit }) {
   const [collectionName, setCollectionName] = useState("");
@@ -43,8 +44,9 @@ export default function NewCollectionForm({ visible, onClose, onSubmit }) {
             </Pressable>
             <Pressable
               onPress={() => {
+                createCollection(collectionName);
                 setCollectionName("");
-                onSubmit(collectionName);
+                onSubmit();
               }}
             >
               <Text style={styles.createCollectionText}>Create</Text>

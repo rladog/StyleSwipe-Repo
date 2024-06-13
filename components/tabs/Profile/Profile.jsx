@@ -3,10 +3,12 @@ import CardDeck from "@/components/tabs/Home/CardDeck";
 import { useEffect, useState } from "react";
 import useFontImport from "@/hooks/useFontImport";
 import redirect from "@/utils/redirect";
-
+import signOutUser from "@/utils/signOutUser";
 const cartIcon = require("@/assets/icons/cart-icon.png");
+import { useNavigation } from "expo-router";
 
 export default function Profile() {
+  const navigation = useNavigation();
   const { fontsReady } = useFontImport();
 
   if (!fontsReady) {
@@ -44,7 +46,12 @@ export default function Profile() {
           <Text style={styles.optionText}>Wipe algorithm</Text>
         </Pressable>
         <Pressable style={styles.optionItem}>
-          <Text style={styles.optionText}>Sign out</Text>
+          <Text
+            style={styles.optionText}
+            onPress={() => signOutUser(navigation)}
+          >
+            Sign out
+          </Text>
         </Pressable>
       </View>
     </View>

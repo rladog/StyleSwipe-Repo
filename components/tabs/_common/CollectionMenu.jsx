@@ -47,12 +47,6 @@ export default function CollectionMenu({
   };
 
   return (
-    // <Modal
-    //   animationType="slide"
-    //   transparent={true}
-    //   visible={visible}
-    //   onRequestClose={onClose}
-    // >
     <>
       {visible && (
         <View style={styles.modal}>
@@ -116,7 +110,6 @@ export default function CollectionMenu({
         </View>
       )}
     </>
-    // </Modal>
   );
 }
 

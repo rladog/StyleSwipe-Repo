@@ -4,6 +4,7 @@ import useSession from "@/hooks/useSession";
 import useFontImport from "@/hooks/useFontImport";
 import { supabase } from "@/utils/supabase";
 import redirect from "@/utils/redirect";
+import changeEmail from "@/utils/changeEmail";
 
 export default function NewEmailTab() {
   const { fontsReady } = useFontImport();
@@ -16,25 +17,15 @@ export default function NewEmailTab() {
   const [message, setMessage] = useState("");
   const [requestSuccess, changeRequestSuccess] = useState(false);
 
-  const handleChangeEmail = async () => {
-    if (!newEmail) {
-      changeRequestSuccess(false);
-      setMessage("Please enter a valid new email");
-      return;
-    }
+  function emailChangeFail(msg) {
+    changeRequestSuccess(false);
+    setMessage(msg);
+  }
 
-    const { data, error } = await supabase.auth.updateUser({
-      email: newEmail,
-    });
-
-    if (error) {
-      changeRequestSuccess(false);
-      setMessage("Error changing email: " + error.message);
-    } else {
-      changeRequestSuccess(true);
-      setMessage("Email changed successfully!");
-    }
-  };
+  function emailChangeSuccess(msg) {
+    changeRequestSuccess(true);
+    setMessage(msg);
+  }
 
   return (
     <View style={styles.container}>
@@ -49,7 +40,12 @@ export default function NewEmailTab() {
           onChangeText={setNewEmail}
         />
       </View>
-      <Pressable style={styles.changeButton} onPress={handleChangeEmail}>
+      <Pressable
+        style={styles.changeButton}
+        onPress={() =>
+          changeEmail(newEmail, emailChangeFail, emailChangeSuccess)
+        }
+      >
         <Text style={styles.buttonText}>Change Email</Text>
       </Pressable>
       {message ? (

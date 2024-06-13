@@ -4,6 +4,7 @@ import useSession from "@/hooks/useSession";
 import useFontImport from "@/hooks/useFontImport";
 import { supabase } from "@/utils/supabase";
 import redirect from "@/utils/redirect";
+import changePassword from "@/utils/changePassword";
 
 export default function NewPasswordTab() {
   const { fontsReady } = useFontImport();
@@ -17,31 +18,15 @@ export default function NewPasswordTab() {
   const [message, setMessage] = useState("");
   const [requestSuccess, changeRequestSuccess] = useState(false);
 
-  const handleChangePassword = async () => {
-    if (!newPassword) {
-      changeRequestSuccess(false);
-      setMessage("Please enter a valid new password");
-      return;
-    }
+  function passwordChangeFail(msg) {
+    changeRequestSuccess(false);
+    setMessage(msg);
+  }
 
-    if (newPasswordConfirm !== newPassword) {
-      changeRequestSuccess(false);
-      setMessage("Please confirm the new password");
-      return;
-    }
-
-    const { data, error } = await supabase.auth.updateUser({
-      password: newPassword,
-    });
-
-    if (error) {
-      changeRequestSuccess(false);
-      setMessage("Error changing password: " + error.message);
-    } else {
-      changeRequestSuccess(true);
-      setMessage("Password changed successfully!");
-    }
-  };
+  function passwordChangeSuccess(msg) {
+    changeRequestSuccess(true);
+    setMessage(msg);
+  }
 
   return (
     <View style={styles.container}>
@@ -68,7 +53,17 @@ export default function NewPasswordTab() {
           secureTextEntry
         />
       </View>
-      <Pressable style={styles.changeButton} onPress={handleChangePassword}>
+      <Pressable
+        style={styles.changeButton}
+        onPress={() =>
+          changePassword(
+            newPassword,
+            newPasswordConfirm,
+            passwordChangeFail,
+            passwordChangeSuccess
+          )
+        }
+      >
         <Text style={styles.buttonText}>Change Password</Text>
       </Pressable>
       {message ? (

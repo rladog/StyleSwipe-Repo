@@ -1,5 +1,4 @@
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
-import { useFonts } from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
 import useFontImport from "@/hooks/useFontImport";
 

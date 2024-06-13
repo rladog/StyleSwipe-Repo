@@ -1,5 +1,4 @@
 import { StyleSheet, View, Text } from "react-native";
-import { useFonts } from "expo-font";
 import CardDeck from "@/components/tabs/Home/CardDeck";
 import { useEffect, useState } from "react";
 import { supabase } from "@/utils/supabase";

@@ -3,7 +3,6 @@ import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/utils/supabase";
 import Auth from "@/components/tabs/_common/Auth";
 import * as SplashScreen from "expo-splash-screen";
-import { useFonts } from "expo-font";
 import { View } from "react-native";
 
 export default function useSession() {

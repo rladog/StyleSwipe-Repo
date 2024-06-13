@@ -2,7 +2,6 @@ import Swiper from "react-native-deck-swiper";
 import { useState } from "react";
 import { StyleSheet } from "react-native";
 import ItemCard from "../_common/ItemCard";
-import ItemDetails from "@/components/tabs/Home/ItemDetails";
 
 export default function CardDeck({
   cards,

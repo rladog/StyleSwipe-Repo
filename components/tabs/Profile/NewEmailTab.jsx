@@ -14,9 +14,11 @@ export default function NewEmailTab() {
 
   const [newEmail, setNewEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [requestSuccess, changeRequestSuccess] = useState(false);
 
   const handleChangeEmail = async () => {
     if (!newEmail) {
+      changeRequestSuccess(false);
       setMessage("Please enter a valid new email");
       return;
     }
@@ -26,8 +28,10 @@ export default function NewEmailTab() {
     });
 
     if (error) {
+      changeRequestSuccess(false);
       setMessage("Error changing email: " + error.message);
     } else {
+      changeRequestSuccess(true);
       setMessage("Email changed successfully!");
     }
   };
@@ -48,7 +52,16 @@ export default function NewEmailTab() {
       <Pressable style={styles.changeButton} onPress={handleChangeEmail}>
         <Text style={styles.buttonText}>Change Email</Text>
       </Pressable>
-      {message ? <Text style={styles.messageText}>{message}</Text> : null}
+      {message ? (
+        <Text
+          style={{
+            ...styles.messageText,
+            color: requestSuccess ? "green" : "red",
+          }}
+        >
+          {message}
+        </Text>
+      ) : null}
     </View>
   );
 }
@@ -105,7 +118,6 @@ const styles = StyleSheet.create({
     color: "rgb(255, 255,247)",
   },
   messageText: {
-    color: "red",
     fontFamily: "Satoshi-Bold",
     fontSize: 20,
     textAlign: "center",

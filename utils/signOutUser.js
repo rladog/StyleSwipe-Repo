@@ -1,17 +1,17 @@
 import { supabase } from "@/utils/supabase";
-import { router, useNavigation } from "expo-router";
+import { router } from "expo-router";
 
-export default async function signOutUser() {
+export default async function signOutUser(navigation) {
+  navigation.reset({
+    index: 0,
+    routes: [{ name: "index" }],
+  });
+
   const { error } = await supabase.auth.signOut();
 
   if (error) {
     alert("Error signing out user");
   }
 
-  const navigation = useNavigation();
-  navigation.reset({
-    index: 0,
-    routes: [{ name: "index" }],
-  });
   router.replace("/");
 }

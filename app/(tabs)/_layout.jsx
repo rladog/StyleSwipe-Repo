@@ -23,6 +23,7 @@ export default function TabLayout() {
         },
         tabBarHideOnKeyboard: true,
       }}
+      backBehavior="history"
     >
       <Tabs.Screen
         name="index"

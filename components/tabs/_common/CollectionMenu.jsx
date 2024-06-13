@@ -12,7 +12,6 @@ import NewCollectionForm from "@/components/tabs/_common/NewCollectionForm";
 import useFontImport from "@/hooks/useFontImport";
 import getCollections from "@/utils/getCollections";
 import addItemToCollection from "@/utils/addItemToCollection";
-import createCollectionAndAdd from "@/utils/createCollectionAndAdd";
 
 function Menu({ itemId, visible, onClose, addToCollectionFn }) {
   const [modalVisible, setModalVisible] = useState(false);

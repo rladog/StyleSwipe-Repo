@@ -107,9 +107,6 @@ export default function CollectionMenu({ itemId, visible, onClose }) {
       addToCollectionFn={(itemId, collectionName) =>
         addItemToCollection(itemId, collectionName)
       }
-      newCollectionFn={(itemId, collectionName) =>
-        createCollectionAndAdd(itemId, collectionName)
-      }
     />
   );
 }

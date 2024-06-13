@@ -15,14 +15,17 @@ export default function NewPasswordTab() {
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState(""); // You might not need this if not verifying old password
   const [message, setMessage] = useState("");
+  const [requestSuccess, changeRequestSuccess] = useState(false);
 
   const handleChangePassword = async () => {
     if (!newPassword) {
+      changeRequestSuccess(false);
       setMessage("Please enter a valid new password");
       return;
     }
 
     if (newPasswordConfirm !== newPassword) {
+      changeRequestSuccess(false);
       setMessage("Please confirm the new password");
       return;
     }
@@ -32,8 +35,10 @@ export default function NewPasswordTab() {
     });
 
     if (error) {
+      changeRequestSuccess(false);
       setMessage("Error changing password: " + error.message);
     } else {
+      changeRequestSuccess(true);
       setMessage("Password changed successfully!");
     }
   };
@@ -66,7 +71,16 @@ export default function NewPasswordTab() {
       <Pressable style={styles.changeButton} onPress={handleChangePassword}>
         <Text style={styles.buttonText}>Change Password</Text>
       </Pressable>
-      {message ? <Text style={styles.messageText}>{message}</Text> : null}
+      {message ? (
+        <Text
+          style={{
+            ...styles.messageText,
+            color: requestSuccess ? "green" : "red",
+          }}
+        >
+          {message}
+        </Text>
+      ) : null}
     </View>
   );
 }
@@ -123,7 +137,6 @@ const styles = StyleSheet.create({
     color: "rgb(255, 255,247)",
   },
   messageText: {
-    color: "red",
     fontFamily: "Satoshi-Bold",
     fontSize: 20,
     textAlign: "center",

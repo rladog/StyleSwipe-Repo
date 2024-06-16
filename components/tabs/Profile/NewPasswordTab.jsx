@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 import { View, TextInput, Pressable, Text, StyleSheet } from "react-native";
 import useSession from "@/hooks/useSession";
-import useFontImport from "@/hooks/useFontImport";
 import { supabase } from "@/utils/supabase";
 import redirect from "@/utils/redirect";
 import changePassword from "@/utils/changePassword";
 
 export default function NewPasswordTab() {
-  const { fontsReady } = useFontImport();
-
-  if (!fontsReady) {
-    return null; // Render nothing while fonts are loading
-  }
-
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState(""); // You might not need this if not verifying old password
   const [message, setMessage] = useState("");

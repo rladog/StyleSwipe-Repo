@@ -7,16 +7,11 @@ import {
   Text,
   Pressable,
 } from "react-native";
-import useFontImport from "@/hooks/useFontImport";
 import createCollection from "@/utils/createCollection";
 
 export default function NewCollectionForm({ visible, onClose, onSubmit }) {
   const [collectionName, setCollectionName] = useState("");
-  const { fontsReady } = useFontImport();
 
-  if (!fontsReady) {
-    return null; // Render nothing while fonts are loading
-  }
   return (
     <Modal
       visible={visible}

@@ -1,7 +1,6 @@
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import CardDeck from "@/components/tabs/Home/CardDeck";
 import { useEffect, useState } from "react";
-import useFontImport from "@/hooks/useFontImport";
 import redirect from "@/utils/redirect";
 import signOutUser from "@/utils/signOutUser";
 const cartIcon = require("@/assets/icons/cart-icon.png");
@@ -9,11 +8,6 @@ import { useNavigation } from "expo-router";
 
 export default function Profile() {
   const navigation = useNavigation();
-  const { fontsReady } = useFontImport();
-
-  if (!fontsReady) {
-    return null; // Render nothing while fonts are loading
-  }
 
   return (
     <View style={styles.container}>

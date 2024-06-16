@@ -1,17 +1,11 @@
 import { StyleSheet, View, Text, Image, Modal, Pressable } from "react-native";
-import useFontImport from "@/hooks/useFontImport";
 import DetailedItemCard from "@/components/tabs/_common/DetailedItemCard";
 import CollectionMenu from "@/components/tabs/_common/CollectionMenu";
 import { useState } from "react";
 import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
 
 export default function ItemDetails({ itemObj, closeFn }) {
-  const { fontsReady } = useFontImport();
   const [showCollectionMenu, setShowCollectionMenu] = useState(false);
-
-  if (!fontsReady) {
-    return <LoadingScreen loadingText={"Loading..."} />; // Render nothing while fonts are loading
-  }
 
   return (
     <>

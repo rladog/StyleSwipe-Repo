@@ -1,24 +1,18 @@
 import { StyleSheet, View, Text } from "react-native";
 import CardDeck from "@/components/tabs/Home/CardDeck";
 import { useEffect, useState } from "react";
-import useFontImport from "@/hooks/useFontImport";
 export default function Home({
   cardProp,
   swipeLeftFn,
   swipeRightFn,
   doubleTapFn,
 }) {
-  const { fontsReady } = useFontImport();
   //Store cards retrieved from database as state
   const [cards, setCards] = useState(cardProp);
 
   useEffect(() => {
     setCards(cardProp);
   }, [cardProp]);
-
-  if (!fontsReady) {
-    return null; // Render nothing while fonts are loading
-  }
 
   return (
     <>

@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 import { View, TextInput, Pressable, Text, StyleSheet } from "react-native";
 import useSession from "@/hooks/useSession";
-import useFontImport from "@/hooks/useFontImport";
 import { supabase } from "@/utils/supabase";
 import redirect from "@/utils/redirect";
 import changeEmail from "@/utils/changeEmail";
 
 export default function NewEmailTab() {
-  const { fontsReady } = useFontImport();
-
-  if (!fontsReady) {
-    return null; // Render nothing while fonts are loading
-  }
-
   const [newEmail, setNewEmail] = useState("");
   const [message, setMessage] = useState("");
   const [requestSuccess, changeRequestSuccess] = useState(false);

@@ -1,8 +1,5 @@
 import { Modal, View, Text, StyleSheet } from "react-native";
-import useFontImport from "@/hooks/useFontImport";
 export default function LoadingScreen({ loadingText }) {
-  const { fontsReady } = useFontImport();
-
   return (
     <Modal>
       <View style={styles.container}>

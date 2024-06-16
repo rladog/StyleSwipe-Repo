@@ -9,22 +9,16 @@ import {
   Pressable,
 } from "react-native";
 import NewCollectionForm from "@/components/tabs/_common/NewCollectionForm";
-import useFontImport from "@/hooks/useFontImport";
 import getCollections from "@/utils/getCollections";
 import addItemToCollection from "@/utils/addItemToCollection";
 
 function Menu({ itemId, visible, onClose, addToCollectionFn }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [collections, setCollections] = useState([{}]);
-  const { fontsReady } = useFontImport();
 
   useEffect(() => {
     getCollections().then((collections) => setCollections(collections));
   }, [modalVisible]);
-
-  if (!fontsReady) {
-    return null; // Render nothing while fonts are loading
-  }
 
   const addItemToCollection = (itemId, collectionName) => {
     console.log(`Item ${itemId} added to ${collectionName}`);

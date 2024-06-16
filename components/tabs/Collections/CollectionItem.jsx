@@ -1,13 +1,8 @@
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { Link } from "expo-router";
-import useFontImport from "@/hooks/useFontImport";
 import { Pressable } from "react-native";
 
 export default function CollectionItem({ href, name }) {
-  const { fontsReady } = useFontImport();
-  if (!fontsReady) {
-    return null; // Render nothing while fonts are loading
-  }
   return (
     <Link href={href} style={styles.collectionItemLink} asChild>
       <Pressable style={styles.collectionItem}>

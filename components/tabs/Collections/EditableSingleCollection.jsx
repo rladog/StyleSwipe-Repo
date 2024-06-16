@@ -8,7 +8,6 @@ import {
   Pressable,
 } from "react-native";
 import ItemCard from "@/components/tabs/_common/ItemCard"; // Import the ItemCard component
-import useFontImport from "@/hooks/useFontImport";
 
 export default function EditableSingleCollection({
   collectionName,
@@ -18,15 +17,10 @@ export default function EditableSingleCollection({
   const [collection, setCollection] = useState(collectionData);
   const [deleteMode, setDeleteMode] = useState(false);
   const [selectedItems, setSelectedItems] = useState(new Set());
-  const { fontsReady } = useFontImport();
 
   useEffect(() => {
     setCollection(collectionData);
   }, [collectionName, collectionData]);
-
-  if (!fontsReady) {
-    return null; // Render nothing while fonts are loading
-  }
 
   const toggleDeleteMode = () => {
     setDeleteMode(!deleteMode);

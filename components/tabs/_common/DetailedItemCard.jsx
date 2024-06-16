@@ -1,6 +1,5 @@
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import useFontImport from "@/hooks/useFontImport";
 
 export default function DetailedItemCard({
   height,
@@ -16,12 +15,6 @@ export default function DetailedItemCard({
   subtype,
   subtypeSize,
 }) {
-  const { fontsReady } = useFontImport();
-
-  if (!fontsReady) {
-    return null; // Render nothing while fonts are loading
-  }
-
   return (
     <View style={{ height, width, ...styles.card }}>
       {/* Gradient to make the description readable */}

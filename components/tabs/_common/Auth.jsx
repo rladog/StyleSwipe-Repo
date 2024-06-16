@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { supabase } from "@/utils/supabase";
 import { Button, Input } from "@rneui/themed";
-import useFontImport from "@/hooks/useFontImport";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
@@ -27,7 +26,6 @@ export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const { fontsReady } = useFontImport();
 
   async function signInWithEmail() {
     setLoading(true);
@@ -63,10 +61,6 @@ export default function Auth() {
 
     if (insertError) Alert.alert(insertError);
     setLoading(false);
-  }
-
-  if (!fontsReady) {
-    return null; // Render nothing while fonts are loading
   }
 
   return (

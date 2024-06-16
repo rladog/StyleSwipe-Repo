@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import useFontImport from "@/hooks/useFontImport";
 export default function Home({
   cardProp,
-  session,
   swipeLeftFn,
   swipeRightFn,
   doubleTapFn,
@@ -29,7 +28,6 @@ export default function Home({
         </View>
         {cards && (
           <CardDeck
-            session={session}
             cards={cards}
             swipeRightFn={(item) => swipeRightFn(item)}
             swipeLeftFn={(item) => swipeLeftFn(item)}

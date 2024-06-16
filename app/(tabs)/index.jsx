@@ -17,5 +17,5 @@ export default function HomeScreen() {
   if (!cards) {
     return <LoadingScreen loadingText={"Loading items..."} />;
   }
-  return <Home cardProp={cards} session={session} />;
+  return <Home cardProp={cards} />;
 }

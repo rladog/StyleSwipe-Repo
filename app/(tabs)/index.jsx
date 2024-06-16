@@ -4,6 +4,8 @@ import Auth from "@/components/tabs/_common/Auth";
 import { useEffect, useState } from "react";
 import getCards from "@/utils/getCards";
 import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
+import addItemToCollection from "@/utils/addItemToCollection";
+import redirect from "@/utils/redirect";
 
 export default function HomeScreen() {
   const { sessionExists, session } = useSession();
@@ -17,5 +19,14 @@ export default function HomeScreen() {
   if (!cards) {
     return <LoadingScreen loadingText={"Loading items..."} />;
   }
-  return <Home cardProp={cards} />;
+  return (
+    <Home
+      cardProp={cards}
+      swipeRightFn={(item) =>
+        addItemToCollection(item.ProductId, "Liked Items")
+      }
+      swipeLeftFn={(item) => null}
+      doubleTapFn={(item) => redirect(`/itemDetail/${item.ProductId}`)}
+    />
+  );
 }

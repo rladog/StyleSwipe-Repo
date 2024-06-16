@@ -28,7 +28,6 @@ export default async function uploadImage(img) {
     });
 
     const data = await response.json();
-    console.log(data);
     alert("Upload successful");
     return data;
   } catch (error) {

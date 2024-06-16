@@ -20,7 +20,6 @@ export default async function getListings() {
   }
 
   if (data) {
-    console.log(data);
     return data?.ProductArray;
   }
 }

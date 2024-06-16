@@ -41,7 +41,6 @@ export default async function getSingleCollection(collectionName) {
     }
 
     if (idArray) {
-      console.log(idArray);
       return idArray;
     }
   }

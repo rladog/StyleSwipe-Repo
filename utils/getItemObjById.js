@@ -24,7 +24,6 @@ export default async function getItemObjById(itemId) {
   }
 
   if (data) {
-    console.log(data);
     return data;
   }
 }

@@ -26,7 +26,6 @@ export default async function getCollections() {
   }
 
   if (data) {
-    console.log(data);
     return data?.collection_obj;
   }
 }

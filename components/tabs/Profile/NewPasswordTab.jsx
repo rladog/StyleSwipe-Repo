@@ -5,10 +5,17 @@ import { supabase } from "@/utils/supabase";
 import redirect from "@/utils/redirect";
 import changePassword from "@/utils/changePassword";
 
+/*
+Component for users to change their password
+*/
+
 export default function NewPasswordTab() {
+  //States to store the new password and the confirmation of the new password
   const [newPassword, setNewPassword] = useState("");
-  const [newPasswordConfirm, setNewPasswordConfirm] = useState(""); // You might not need this if not verifying old password
+  const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
+  //State to store the message to inform users of how the change went
   const [message, setMessage] = useState("");
+  //State to store the success or failure of the password change
   const [requestSuccess, changeRequestSuccess] = useState(false);
 
   function passwordChangeFail(msg) {
@@ -28,6 +35,7 @@ export default function NewPasswordTab() {
       </Pressable> */}
       <View style={styles.inputContainer}>
         <Text style={styles.inputText}>Enter New Password</Text>
+        {/* Change the new password state on input to be equal to the current value */}
         <TextInput
           style={styles.input}
           // placeholder="New password"
@@ -38,6 +46,7 @@ export default function NewPasswordTab() {
       </View>
       <View style={styles.inputContainer}>
         <Text style={styles.inputText}>Confirm New Password</Text>
+        {/* Change the confirm password state on input to be equal to the current value */}
         <TextInput
           style={styles.input}
           // placeholder="Confirm new password"
@@ -46,6 +55,10 @@ export default function NewPasswordTab() {
           secureTextEntry
         />
       </View>
+      {/* 
+      Call the changePassword() function with callback functions
+      which are called depending on the outcome of the update
+      */}
       <Pressable
         style={styles.changeButton}
         onPress={() =>

@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text } from "react-native";
 import CollectionItem from "./CollectionItem";
 import { useEffect, useState } from "react";
+import redirect from "@/utils/redirect";
 
 export default function Collections({ collectionsProp }) {
   //Store cards retrieved from database as state
@@ -22,7 +23,7 @@ export default function Collections({ collectionsProp }) {
             {Object.entries(collections).map((keyValArray) => (
               <CollectionItem
                 key={keyValArray[0]}
-                href={`/collection/${keyValArray[0]}`}
+                onPressFn={() => redirect(`/collection/${keyValArray[0]}`)}
                 name={keyValArray[0]}
               />
             ))}

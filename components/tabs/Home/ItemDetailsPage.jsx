@@ -4,18 +4,36 @@ import CollectionMenu from "@/components/tabs/_common/CollectionMenu";
 import { useState } from "react";
 import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
 
+/*
+Component to display details about an item
+
+Takes in an itemObj, which is an JSON representation of a clothing item
+containing details regarding the item
+and a callback function to be called when the page is closed
+*/
+
 export default function ItemDetails({ itemObj, closeFn }) {
+  // State for whether the collection menu,
+  // which shows collections the current clothing item can be saved to,
+  // should be shown or not
   const [showCollectionMenu, setShowCollectionMenu] = useState(false);
 
   return (
     <>
-      <View style={styles.modal}>
+      <View testID="item-details-page-container" style={styles.modal}>
         <View style={styles.card}>
           <View style={styles.buttonHolder}>
-            <Pressable style={styles.closePressable} onPress={closeFn}>
+            {/* Calls the closeFn callback function to close the item details page */}
+            <Pressable
+              testID="item-details-close-button"
+              style={styles.closePressable}
+              onPress={closeFn}
+            >
               <Text style={styles.closeText}>Close</Text>
             </Pressable>
+            {/* Changes the state of displaying the collection menu to be true */}
             <Pressable
+              testID="item-details-add-to-collections-button"
               style={styles.addPressable}
               onPress={() => setShowCollectionMenu(true)}
             >
@@ -23,6 +41,10 @@ export default function ItemDetails({ itemObj, closeFn }) {
             </Pressable>
           </View>
 
+          {/* 
+          DetailedItemCard component is used to show the details about the item
+          based on information stored in the itemObj prop
+          */}
           <DetailedItemCard
             height={"100%"}
             width={"100%"}
@@ -45,6 +67,10 @@ export default function ItemDetails({ itemObj, closeFn }) {
         </View>
       </View>
 
+      {/* 
+      The CollectionMenu component which is displayed conditionally 
+      based on the showCollectionMenu state 
+      */}
       <CollectionMenu
         visible={showCollectionMenu}
         itemId={itemObj.ProductId}

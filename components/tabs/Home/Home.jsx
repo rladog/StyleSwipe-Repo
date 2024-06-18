@@ -1,6 +1,15 @@
 import { StyleSheet, View, Text } from "react-native";
 import CardDeck from "@/components/tabs/Home/CardDeck";
 import { useEffect, useState } from "react";
+
+/*
+Component to display the home page
+Uses the CardDeck component to display the swipable card deck
+
+Takes in an array of objects for information needed to display each cards
+and 3 callback functions to be called when cards are swiped left and right and double tapped
+*/
+
 export default function Home({
   cardProp,
   swipeLeftFn,
@@ -10,13 +19,17 @@ export default function Home({
   //Store cards retrieved from database as state
   const [cards, setCards] = useState(cardProp);
 
+  /*
+  Calls useEffect to update the "cards" state
+  whenever the cardProp passed in from its parent component is changed
+  */
   useEffect(() => {
     setCards(cardProp);
   }, [cardProp]);
 
   return (
     <>
-      <View style={styles.container}>
+      <View testID="home-container" style={styles.container}>
         <View style={styles.headingContainer}>
           <Text style={styles.titleText}>Swipe!</Text>
         </View>

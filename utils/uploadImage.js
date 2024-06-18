@@ -3,7 +3,7 @@ import * as ImagePicker from "expo-image-picker";
 export default async function uploadImage(img) {
   if (!img) {
     alert("No image selected");
-    return;
+    return null;
   }
 
   console.log(img);

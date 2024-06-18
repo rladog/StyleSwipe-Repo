@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text, Image, Modal, Pressable } from "react-native";
 import DetailedItemCard from "@/components/tabs/_common/DetailedItemCard";
-import CollectionMenu from "@/components/tabs/_common/CollectionMenu";
+import CollectionMenu from "@/components/tabs/Home/CollectionMenu";
 import { useState } from "react";
 import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
 

@@ -7,29 +7,39 @@ import {
   Text,
   Pressable,
 } from "react-native";
-import createCollection from "@/utils/createCollection";
 
+//Takes in visible as prop from its parent component to control the visibility
+//Takes in onClose and onSubmit as prop which are callback functions to be called
+//on closing or submitting the form
 export default function NewCollectionForm({ visible, onClose, onSubmit }) {
+  //State to keep track of the new collection name
+  //being inputted into the form
   const [collectionName, setCollectionName] = useState("");
 
   return (
+    //Returns a modal to contain the new collection form
+    //on top of the item details page and the collections menu
     <Modal
       visible={visible}
       animationType="slide"
       transparent={true}
       onRequestClose={() => onClose()}
+      testID="new-collection-form-modal"
     >
-      <View style={styles.container}>
+      <View style={styles.container} testID="new-collection-form">
         <View style={styles.formContainer}>
           <TextInput
             placeholder="Enter new collection name"
             value={collectionName}
             onChangeText={setCollectionName}
             style={styles.input}
+            testID="new-collection-form-name-input"
           />
           <View style={styles.buttonContainer}>
             <Pressable
+              testID="new-collection-form-cancel-button"
               onPress={() => {
+                /* Calls the onClose callback which takes in no arguments */
                 setCollectionName("");
                 onClose();
               }}
@@ -38,8 +48,9 @@ export default function NewCollectionForm({ visible, onClose, onSubmit }) {
               <Text style={styles.closeFormText}>Close</Text>
             </Pressable>
             <Pressable
+              testID="new-collection-form-submit-button"
               onPress={() => {
-                createCollection(collectionName);
+                /* Calls the onSubmit callback with the collectionName argument */
                 setCollectionName("");
                 onSubmit(collectionName);
               }}

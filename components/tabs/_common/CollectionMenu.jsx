@@ -11,25 +11,37 @@ import {
 import NewCollectionForm from "@/components/tabs/_common/NewCollectionForm";
 import getCollections from "@/utils/getCollections";
 import addItemToCollection from "@/utils/addItemToCollection";
+import createCollection from "@/utils/createCollection";
+
+/*
+Component to display the collections the user can add a clothing item into
+once the user goes to see the specific details of a clothing item
+
+Takes in the current itemId the user was on when the menu was opened
+the visibility of the menu,
+the callback function to be called when the menu is closed
+and the callback function to be called when an item is added to a collection on the menu
+*/
 
 function Menu({ itemId, visible, onClose, addToCollectionFn }) {
+  //State for the visibility of the menu
   const [modalVisible, setModalVisible] = useState(false);
+  //State for representing the list current collections as an array of collection object
   const [collections, setCollections] = useState([{}]);
 
+  //Call useEffect to get collections through an API call to the backend
+  //and set the collections state to the fetched data
+
+  //This is done every time the menu is opened which corresponds to the "visibility" changes
   useEffect(() => {
     getCollections().then((collections) => setCollections(collections));
   }, [modalVisible]);
 
-  const addItemToCollection = (itemId, collectionName) => {
-    console.log(`Item ${itemId} added to ${collectionName}`);
-    addToCollectionFn(itemId, collectionName);
-    // Additional logic to update collections state or backend can be implemented here
-  };
-
   return (
     <>
+      {/* Render the menu conditionally based on the "visible" state */}
       {visible && (
-        <View style={styles.modal}>
+        <View testID="collection-menu-container" style={styles.modal}>
           <View style={styles.container}>
             <View style={styles.menuContainer}>
               <View style={styles.menuTitleContainer}>
@@ -38,9 +50,14 @@ function Menu({ itemId, visible, onClose, addToCollectionFn }) {
                 </Text>
               </View>
               <View style={styles.listContainer}>
+                {/* The list of collections is rendered through a FlatList */}
                 <FlatList
+                  testID="collections-list"
                   data={collections ? Object.keys(collections) : []}
                   keyExtractor={(item) => item}
+                  // Each item is rendered as a TouchableOpacity
+                  // Pressing the item adds the clothing item the user was viewing
+                  // into the collection represented by the item
                   renderItem={({ item }) => (
                     <TouchableOpacity
                       style={{
@@ -51,7 +68,7 @@ function Menu({ itemId, visible, onClose, addToCollectionFn }) {
                         borderWidth: 2,
                         borderRadius: 10,
                       }}
-                      onPress={() => addItemToCollection(itemId, item)}
+                      onPress={() => addToCollectionFn(itemId, item)}
                     >
                       <Text
                         style={{
@@ -65,6 +82,8 @@ function Menu({ itemId, visible, onClose, addToCollectionFn }) {
                       </Text>
                     </TouchableOpacity>
                   )}
+                  // The footer contains a Pressable that when pressed
+                  // brings up a form for creating a new collection
                   ListFooterComponent={
                     <Pressable
                       style={styles.newButton}
@@ -75,7 +94,11 @@ function Menu({ itemId, visible, onClose, addToCollectionFn }) {
                   }
                 />
               </View>
-              <Pressable onPress={onClose} style={styles.closeButton}>
+              <Pressable
+                onPress={onClose}
+                style={styles.closeButton}
+                testID="collection-menu-close-button"
+              >
                 <Text style={styles.closeText}>Close</Text>
               </Pressable>
             </View>
@@ -94,6 +117,9 @@ function Menu({ itemId, visible, onClose, addToCollectionFn }) {
   );
 }
 
+// Return a function that returns a CollectionMenu
+// that adds clothing items into a collection item
+// by making a call to the backend with the addItemToCollection() function
 export default function CollectionMenu({ itemId, visible, onClose }) {
   return (
     <Menu

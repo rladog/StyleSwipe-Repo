@@ -41,7 +41,7 @@ export default function NewCollectionForm({ visible, onClose, onSubmit }) {
               onPress={() => {
                 createCollection(collectionName);
                 setCollectionName("");
-                onSubmit();
+                onSubmit(collectionName);
               }}
             >
               <Text style={styles.createCollectionText}>Create</Text>

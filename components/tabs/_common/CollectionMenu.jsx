@@ -83,7 +83,10 @@ function Menu({ itemId, visible, onClose, addToCollectionFn }) {
           <NewCollectionForm
             visible={modalVisible}
             onClose={() => setModalVisible(false)}
-            onSubmit={() => setModalVisible(false)}
+            onSubmit={(newCollectionName) => {
+              setModalVisible(false);
+              createCollection(newCollectionName);
+            }}
           />
         </View>
       )}

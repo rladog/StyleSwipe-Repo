@@ -14,14 +14,20 @@ import uploadImage from "@/utils/uploadImage";
 import createListing from "@/utils/createListing";
 const trashIcon = require("@/assets/icons/trash-icon.png");
 
+/*
+Component for users to create a new listing
+*/
+
 export default function NewListingTab() {
+  //State to store the URI for the item image
   const [itemImage, setItemImage] = useState(null);
+  //States to store the new item name, gender, and category
   const [itemName, setItemName] = useState("");
   const [itemGender, setItemGender] = useState("");
   const [itemCategory, setItemCategory] = useState("");
 
   async function uploadListing(itemImage, itemName, itemGender, itemCategory) {
-    console.log(itemImage);
+    //Alert the users if any of the required fields are missing
     if (!itemImage) {
       alert("Item image missing!");
       return false;
@@ -39,15 +45,21 @@ export default function NewListingTab() {
       return false;
     }
 
+    //call the uploadImage() function with the item image URI
     let { data: imageData } = await uploadImage(itemImage);
+    //get the online link of the uploaded item image
     let imageURL = imageData.link;
 
+    //create a new listing with the given fields
     await createListing(imageURL, itemName, itemGender, itemCategory);
     return true;
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      testID="new-listing-tab-container"
+    >
       <View style={styles.headingContainer}>
         <Text style={styles.titleText}>New Listing</Text>
         <Text style={styles.titleSubText}>
@@ -57,6 +69,7 @@ export default function NewListingTab() {
       <View style={styles.inputsContainer}>
         <Text style={styles.inputText}>Image*</Text>
         <Pressable
+          testID="new-listing-image-input"
           style={styles.imageInput}
           onPress={() => pickImage().then((data) => setItemImage(data))}
         >
@@ -69,6 +82,7 @@ export default function NewListingTab() {
       <View style={styles.inputsContainer}>
         <Text style={styles.inputText}>Item Name*</Text>
         <TextInput
+          testID="new-listing-name-input"
           style={styles.textInput}
           onChangeText={setItemName}
         ></TextInput>
@@ -76,6 +90,7 @@ export default function NewListingTab() {
       <View style={styles.inputsContainer}>
         <Text style={styles.inputText}>Category*</Text>
         <TextInput
+          testID="new-listing-category-input"
           style={styles.textInput}
           onChangeText={setItemCategory}
         ></TextInput>
@@ -83,12 +98,16 @@ export default function NewListingTab() {
       <View style={styles.inputsContainer}>
         <Text style={styles.inputText}>Gender*</Text>
         <TextInput
+          testID="new-listing-gender-input"
           style={styles.textInput}
           onChangeText={setItemGender}
         ></TextInput>
       </View>
       <View style={styles.buttonContainer}>
-        <Pressable style={styles.createButton}>
+        <Pressable
+          style={styles.createButton}
+          testID="new-listing-cancel-button"
+        >
           <Image source={trashIcon} style={{ width: 48, height: 48 }} />
         </Pressable>
         <Pressable
@@ -96,6 +115,7 @@ export default function NewListingTab() {
           onPress={() =>
             uploadListing(itemImage, itemName, itemGender, itemCategory)
           }
+          testID="new-listing-create-button"
         >
           <Text style={styles.createButtonText}>CREATE</Text>
         </Pressable>

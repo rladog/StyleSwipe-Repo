@@ -2,13 +2,11 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { Link } from "expo-router";
 import { Pressable } from "react-native";
 
-export default function CollectionItem({ href, name }) {
+export default function CollectionItem({ name, onPressFn }) {
   return (
-    <Link href={href} style={styles.collectionItemLink} asChild>
-      <Pressable style={styles.collectionItem}>
-        <Text style={styles.collectionItemText}>{name}</Text>
-      </Pressable>
-    </Link>
+    <Pressable style={styles.collectionItem} onPress={onPressFn}>
+      <Text style={styles.collectionItemText}>{name}</Text>
+    </Pressable>
   );
 }
 

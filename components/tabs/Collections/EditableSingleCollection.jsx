@@ -52,7 +52,8 @@ export default function EditableSingleCollection({
   };
 
   const renderItem = ({ item }) => (
-    <View
+    <Pressable
+      onPress={() => selectItem(item.ProductId)}
       style={{
         marginHorizontal: "3%",
         width: "45%",
@@ -74,7 +75,7 @@ export default function EditableSingleCollection({
         nameSize={12}
       />
       {deleteMode && (
-        <TouchableOpacity
+        <View
           style={{
             padding: 10,
             backgroundColor: "rgba(0,0,0,0.5)",
@@ -83,14 +84,13 @@ export default function EditableSingleCollection({
             top: 10,
             right: 10,
           }}
-          onPress={() => selectItem(item.ProductId)}
         >
           <Text style={{ color: "white", fontSize: 18 }}>
             {selectedItems.has(item.ProductId) ? "✓" : "✗"}
           </Text>
-        </TouchableOpacity>
+        </View>
       )}
-    </View>
+    </Pressable>
   );
 
   return (

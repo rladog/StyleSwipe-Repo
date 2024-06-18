@@ -40,9 +40,9 @@ export default function EditableSingleCollection({
   };
 
   const handleConfirmDelete = () => {
-    for (item in selectedItems) {
-      deleteFn(item.ProductId, collectionName);
-    }
+    selectedItems.forEach((id) => {
+      deleteFn(id, collectionName);
+    });
     const newItems = collection.filter(
       (item) => !selectedItems.has(item.ProductId)
     );

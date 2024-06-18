@@ -29,7 +29,7 @@ export default function NewPasswordTab() {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="new-password-tab-container">
       {/* <Pressable style={styles.closeButton}>
         <Text style={styles.closeText}>Close</Text>
       </Pressable> */}

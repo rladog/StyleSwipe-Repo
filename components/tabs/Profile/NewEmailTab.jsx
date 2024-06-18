@@ -5,9 +5,16 @@ import { supabase } from "@/utils/supabase";
 import redirect from "@/utils/redirect";
 import changeEmail from "@/utils/changeEmail";
 
+/*
+Component for users to change their email
+*/
+
 export default function NewEmailTab() {
+  //State to store new email
   const [newEmail, setNewEmail] = useState("");
+  //State to store the message to inform users of how the change went
   const [message, setMessage] = useState("");
+  //State to store the success or failure of the email change
   const [requestSuccess, changeRequestSuccess] = useState(false);
 
   function emailChangeFail(msg) {
@@ -21,19 +28,26 @@ export default function NewEmailTab() {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="new-email-tab-container">
       {/* <Pressable style={styles.closeButton}>
         <Text style={styles.closeText}>Close</Text>
       </Pressable> */}
       <View style={styles.inputContainer}>
         <Text style={styles.inputText}>Enter New Email</Text>
+        {/* Change the new email state on input to be equal to the current value */}
         <TextInput
+          testID="new-email-input"
           style={styles.input}
           value={newEmail}
           onChangeText={setNewEmail}
         />
       </View>
+      {/* 
+      Call the changeEmail() function with callback functions
+      which are called depending on the outcome of the update
+      */}
       <Pressable
+        testID="new-email-change-button"
         style={styles.changeButton}
         onPress={() =>
           changeEmail(newEmail, emailChangeFail, emailChangeSuccess)

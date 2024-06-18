@@ -6,39 +6,58 @@ import signOutUser from "@/utils/signOutUser";
 const cartIcon = require("@/assets/icons/cart-icon.png");
 import { useNavigation } from "expo-router";
 
+/*
+Component to be displayed on the Profile tab
+
+Contains different buttons that redirect to different pages
+for users to perform actions related to their profile
+*/
+
 export default function Profile() {
+  //useNavigation() hook call to sign a user out if need be
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="profile-container">
       <View style={styles.headingContainer}>
         <Text style={styles.titleText}>Profile</Text>
       </View>
       <View style={styles.optionsContainer}>
+        {/* Button for redirecting users to a "change email" tab */}
         <Pressable
           style={styles.optionItem}
           onPress={() => redirect("/profile/newEmail")}
         >
           <Text style={styles.optionText}>Change email address</Text>
         </Pressable>
+
+        {/* Button for redirecting users to a "change password" tab */}
         <Pressable
           style={styles.optionItem}
           onPress={() => redirect("/profile/newPassword")}
         >
           <Text style={styles.optionText}>Change password</Text>
         </Pressable>
+
+        {/* Button for redirecting users to see the listings they created */}
         <Pressable style={styles.optionItem}>
           <Text style={styles.optionText}>View my listings</Text>
         </Pressable>
+
+        {/* Button for redirecting users to a "create listing" tab */}
         <Pressable
           style={styles.optionItem}
           onPress={() => redirect("/listings/newListing")}
         >
           <Text style={styles.optionText}>Create new listing</Text>
         </Pressable>
+
+        {/* Button for allowing users to wipe their product recommendation algorithm tab */}
         <Pressable style={styles.optionItem}>
           <Text style={styles.optionText}>Wipe algorithm</Text>
         </Pressable>
+
+        {/* Button for signing users out */}
         <Pressable style={styles.optionItem}>
           <Text
             style={styles.optionText}

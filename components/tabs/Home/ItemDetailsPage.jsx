@@ -8,9 +8,61 @@ import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
 Component to display details about an item
 
 Takes in an itemObj, which is an JSON representation of a clothing item
-containing details regarding the item
-and a callback function to be called when the page is closed
+containing details regarding the item,
+a callback function to be called when the page is closed,
+and a callback function to be called when "Add to collections" is pressed
 */
+
+function Details({ itemObj, closeFn, showCollectionsFn }) {
+  return (
+    <View testID="item-details-page-container" style={styles.modal}>
+      <View style={styles.card}>
+        <View style={styles.buttonHolder}>
+          {/* Calls the closeFn callback function to close the item details page */}
+          <Pressable
+            testID="item-details-close-button"
+            style={styles.closePressable}
+            onPress={closeFn}
+          >
+            <Text style={styles.closeText}>Close</Text>
+          </Pressable>
+          {/* Calls the showCollectionsFn callback function to show the item details page */}
+          <Pressable
+            testID="item-details-add-to-collections-button"
+            style={styles.addPressable}
+            onPress={showCollectionsFn}
+          >
+            <Text style={styles.addText}>{"Add to \ncollection"}</Text>
+          </Pressable>
+        </View>
+
+        {/* 
+          DetailedItemCard component is used to show the details about the item
+          based on information stored in the itemObj prop
+          */}
+        <DetailedItemCard
+          height={"100%"}
+          width={"100%"}
+          gradientHeight={0.6}
+          imageURL={itemObj.ImageURL}
+          name={itemObj.ProductTitle}
+          nameSize={40}
+          gender={itemObj.Gender}
+          genderSize={20}
+          type={itemObj.ProductType}
+          typeSize={20}
+          subtype={itemObj.SubCategory}
+          subtypeSize={18}
+        />
+        <View>
+          <Pressable>
+            <Text>Press me!</Text>
+          </Pressable>
+        </View>
+      </View>
+    </View>
+  );
+}
 
 export default function ItemDetails({ itemObj, closeFn }) {
   // State for whether the collection menu,
@@ -20,53 +72,11 @@ export default function ItemDetails({ itemObj, closeFn }) {
 
   return (
     <>
-      <View testID="item-details-page-container" style={styles.modal}>
-        <View style={styles.card}>
-          <View style={styles.buttonHolder}>
-            {/* Calls the closeFn callback function to close the item details page */}
-            <Pressable
-              testID="item-details-close-button"
-              style={styles.closePressable}
-              onPress={closeFn}
-            >
-              <Text style={styles.closeText}>Close</Text>
-            </Pressable>
-            {/* Changes the state of displaying the collection menu to be true */}
-            <Pressable
-              testID="item-details-add-to-collections-button"
-              style={styles.addPressable}
-              onPress={() => setShowCollectionMenu(true)}
-            >
-              <Text style={styles.addText}>{"Add to \ncollection"}</Text>
-            </Pressable>
-          </View>
-
-          {/* 
-          DetailedItemCard component is used to show the details about the item
-          based on information stored in the itemObj prop
-          */}
-          <DetailedItemCard
-            height={"100%"}
-            width={"100%"}
-            gradientHeight={0.6}
-            imageURL={itemObj.ImageURL}
-            name={itemObj.ProductTitle}
-            nameSize={40}
-            gender={itemObj.Gender}
-            genderSize={20}
-            type={itemObj.ProductType}
-            typeSize={20}
-            subtype={itemObj.SubCategory}
-            subtypeSize={18}
-          />
-          <View>
-            <Pressable>
-              <Text>Press me!</Text>
-            </Pressable>
-          </View>
-        </View>
-      </View>
-
+      <Details
+        itemObj={itemObj}
+        closeFn={closeFn}
+        showCollectionsFn={() => setShowCollectionMenu(true)}
+      />
       {/* 
       The CollectionMenu component which is displayed conditionally 
       based on the showCollectionMenu state 

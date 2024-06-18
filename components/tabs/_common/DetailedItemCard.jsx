@@ -1,6 +1,22 @@
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
+/*
+Component to display an item in a card format
+Similar to the ItemCard component,
+but displays more details about the item such as 
+item type, item subtype, and the intended gender for the item
+
+Takes in height, width,
+gradientHeight, which is a value between 0 and 1 that determines
+how much of the card is taken up by a gradient from the bottom,
+the name of the item,
+the font size for the name to be displayed,
+URL for the item image to be displayed,
+the type, subtype, intended gender,
+and font sizes for those texts
+*/
+
 export default function DetailedItemCard({
   height,
   width,
@@ -16,7 +32,7 @@ export default function DetailedItemCard({
   subtypeSize,
 }) {
   return (
-    <View style={{ height, width, ...styles.card }}>
+    <View style={{ height, width, ...styles.card }} testID="detailed-item-card">
       {/* Gradient to make the description readable */}
       <LinearGradient
         style={styles.gradient}

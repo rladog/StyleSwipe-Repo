@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { View, TextInput, Pressable, Text, StyleSheet } from "react-native";
-import useSession from "@/hooks/useSession";
-import { supabase } from "@/utils/supabase";
-import redirect from "@/utils/redirect";
 import changeEmail from "@/utils/changeEmail";
 
 /*

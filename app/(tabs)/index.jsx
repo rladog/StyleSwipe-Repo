@@ -6,10 +6,12 @@ import getCards from "@/utils/getCards";
 import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
 import addItemToCollection from "@/utils/addItemToCollection";
 import redirect from "@/utils/redirect";
+import useFontImport from "@/hooks/useFontImport";
 
 export default function HomeScreen() {
   const { sessionExists, session } = useSession();
   const [cards, setCards] = useState(null);
+  useFontImport();
 
   useEffect(() => {
     getCards().then((cards) => setCards(cards));

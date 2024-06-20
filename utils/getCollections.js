@@ -1,9 +1,9 @@
 import "react-native-url-polyfill/auto";
 import { supabase } from "@/utils/supabase";
-import getSession from "@/utils/getSession";
+import getUserId from "@/utils/getUserId";
 
 export default async function getCollections() {
-  let session = await getSession();
+  let userId = await getUserId();
 
   if (!session) {
     alert("Error getting login info");
@@ -11,12 +11,10 @@ export default async function getCollections() {
     return null;
   }
 
-  let user_id = session.data.session.user.id;
-
   const { data, error } = await supabase
     .from("collections")
     .select("collection_obj")
-    .eq("user_id", user_id)
+    .eq("user_id", userId)
     .single();
 
   if (error) {

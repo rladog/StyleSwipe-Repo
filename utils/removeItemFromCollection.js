@@ -1,21 +1,19 @@
 import { supabase } from "@/utils/supabase";
 import getSession from "@/utils/getSession";
-
+import getUserId from "@/utils/getUserId";
 export default async function removeItemFromCollection(itemId, collectionName) {
-  let session = await getSession();
+  let userId = await getUserId();
 
-  if (!session) {
+  if (!userId) {
     alert("Error getting login info");
     console.log(error);
     return false;
   }
 
-  let user_id = session.data.session.user.id;
-
   const { data, error } = await supabase
     .from("collections")
     .select("collection_obj")
-    .eq("user_id", user_id)
+    .eq("user_id", userId)
     .single();
 
   if (error) {
@@ -44,7 +42,7 @@ export default async function removeItemFromCollection(itemId, collectionName) {
     collection_obj = { collection, ...collection_obj };
 
     const updates = {
-      user_id: user_id,
+      user_id: userId,
       collection_obj,
     };
 

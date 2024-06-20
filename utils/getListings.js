@@ -1,16 +1,20 @@
 import "react-native-url-polyfill/auto";
 import { supabase } from "@/utils/supabase";
-import getSession from "@/utils/getSession";
+import getUserId from "@/utils/getUserId";
 
 export default async function getListings() {
-  let session = await getSession();
+  let userId = await getUserId();
 
-  let user_id = session.data.session.user.id;
+  if (!userId) {
+    alert("Error getting login info");
+    console.log(error);
+    return null;
+  }
 
   const { data, error } = await supabase
     .from("listings")
     .select("ProductArray")
-    .eq("user_id", user_id)
+    .eq("user_id", userId)
     .single();
 
   if (error) {

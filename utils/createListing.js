@@ -1,9 +1,15 @@
 import { supabase } from "@/utils/supabase";
-import getSession from "@/utils/getSession";
 import getNewItemId from "@/utils/getNewItemId";
 import getListings from "@/utils/getListings";
+import getUserId from "@/utils/getUserId";
 export default async function createListing(imageURL, name, gender, category) {
-  let session = await getSession();
+  let userId = await getUserId();
+
+  if (!userId) {
+    alert("Error getting login info");
+    console.log(error);
+    return false;
+  }
 
   /*
   ***required fields = ProductId, ImageURL, ProductTitle, Gender, ProductType, user_id
@@ -31,14 +37,12 @@ export default async function createListing(imageURL, name, gender, category) {
     return false;
   }
 
-  let user_id = session.data.session.user.id;
-
   let ProductArray = await getListings();
 
   ProductArray.push(itemObj);
 
   let listingObj = {
-    user_id,
+    user_id: userId,
     ProductArray,
   };
 

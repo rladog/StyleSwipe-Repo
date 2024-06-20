@@ -2,9 +2,7 @@ import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import CardDeck from "@/components/tabs/Home/CardDeck";
 import { useEffect, useState } from "react";
 import redirect from "@/utils/redirect";
-import signOutUser from "@/utils/signOutUser";
 const cartIcon = require("@/assets/icons/cart-icon.png");
-import { useNavigation } from "expo-router";
 
 /*
 Component to be displayed on the Profile tab
@@ -14,9 +12,6 @@ for users to perform actions related to their profile
 */
 
 export default function Profile() {
-  //useNavigation() hook call to sign a user out if need be
-  const navigation = useNavigation();
-
   return (
     <View style={styles.container} testID="profile-container">
       <View style={styles.headingContainer}>
@@ -61,7 +56,7 @@ export default function Profile() {
         <Pressable style={styles.optionItem}>
           <Text
             style={styles.optionText}
-            onPress={() => signOutUser(navigation)}
+            onPress={() => redirect("/profile/signOut")}
           >
             Sign out
           </Text>

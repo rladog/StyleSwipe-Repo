@@ -5,7 +5,7 @@ import getUserId from "@/utils/getUserId";
 export default async function getCollections() {
   let userId = await getUserId();
 
-  if (!session) {
+  if (!userId) {
     alert("Error getting login info");
     console.log(error);
     return null;

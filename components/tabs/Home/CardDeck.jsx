@@ -2,7 +2,7 @@ import Swiper from "react-native-deck-swiper";
 import { useState } from "react";
 import { StyleSheet } from "react-native";
 import ItemCard from "@/components/tabs/_common/ItemCard";
-
+import incrementStartIndex from "@/utils/incrementStartIndex";
 /*
 Component for displaying the deck of swipable cards on the home screen
 Uses the react-native-deck-swiper library for the card swiping and tapping logic
@@ -45,8 +45,14 @@ export default function CardDeck({
       //Call the function passed in as prop
       //if the card is swiped right
       //with the given index of the card
-      onSwipedRight={(index) => swipeRightFn(cards[index])}
-      onSwipedLeft={(index) => swipeLeftFn(cards[index])}
+      onSwipedRight={(index) => {
+        incrementStartIndex(1);
+        swipeRightFn(cards[index]);
+      }}
+      onSwipedLeft={(index) => {
+        incrementStartIndex(1);
+        swipeLeftFn(cards[index]);
+      }}
       onTapCard={(index) => {
         //On the first tap, set number of taps to 1
         if (taps == 0) {
@@ -57,7 +63,6 @@ export default function CardDeck({
         //call the double tap function
         //and set the number of taps to zero
         if (taps == 1) {
-          setCurrentIndex(index);
           doubleTapFn(cards[index]);
           setTaps(0);
         }

@@ -34,6 +34,7 @@ export default function NewPasswordTab() {
         <Text style={styles.inputText}>Enter New Password</Text>
         {/* Change the new password state on input to be equal to the current value */}
         <TextInput
+          testID="new-password-input"
           style={styles.input}
           // placeholder="New password"
           value={newPassword}
@@ -45,6 +46,7 @@ export default function NewPasswordTab() {
         <Text style={styles.inputText}>Confirm New Password</Text>
         {/* Change the confirm password state on input to be equal to the current value */}
         <TextInput
+          testID="new-password-confirm-input"
           style={styles.input}
           // placeholder="Confirm new password"
           value={newPasswordConfirm}
@@ -57,6 +59,7 @@ export default function NewPasswordTab() {
       which are called depending on the outcome of the update
       */}
       <Pressable
+        testID="new-password-change-button"
         style={styles.changeButton}
         onPress={() =>
           changePassword(

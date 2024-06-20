@@ -8,7 +8,7 @@ export default async function updateStartIndex(newIndex) {
   const { data, error: getError } = await supabase
     .from("profiles")
     .select()
-    .eq("user_id", userId)
+    .eq("id", userId)
     .single();
 
   //Output the error if there are any

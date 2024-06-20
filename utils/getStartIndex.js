@@ -8,7 +8,7 @@ export default async function getStartIndex() {
   const { data, error } = await supabase
     .from("profiles")
     .select("item_index")
-    .eq("user_id", userId)
+    .eq("id", userId)
     .single();
 
   //Output the error if there are any
@@ -17,7 +17,6 @@ export default async function getStartIndex() {
     console.log(error);
     return null;
   }
-
   //Return the latest item index the user was looking at
   return data.item_index;
 }

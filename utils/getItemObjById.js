@@ -1,10 +1,7 @@
 import "react-native-url-polyfill/auto";
 import { supabase } from "@/utils/supabase";
-import getSession from "@/utils/getSession";
 
 export default async function getItemObjById(itemId) {
-  let session = await getSession();
-
   if (!session) {
     alert("Error getting login info");
     console.log(error);

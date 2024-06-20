@@ -1,5 +1,4 @@
 import { supabase } from "@/utils/supabase";
-import getSession from "@/utils/getSession";
 import getUserId from "@/utils/getUserId";
 export default async function removeItemFromCollection(itemId, collectionName) {
   let userId = await getUserId();

@@ -72,7 +72,7 @@ export default function NewPasswordTab() {
       >
         <Text style={styles.buttonText}>Change Password</Text>
       </Pressable>
-      {message ? (
+      {message && (
         <Text
           style={{
             ...styles.messageText,
@@ -81,7 +81,7 @@ export default function NewPasswordTab() {
         >
           {message}
         </Text>
-      ) : null}
+      )}
     </View>
   );
 }

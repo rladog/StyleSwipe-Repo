@@ -52,7 +52,7 @@ export default function NewEmailTab() {
       >
         <Text style={styles.buttonText}>Change Email</Text>
       </Pressable>
-      {message ? (
+      {message && (
         <Text
           style={{
             ...styles.messageText,
@@ -61,7 +61,7 @@ export default function NewEmailTab() {
         >
           {message}
         </Text>
-      ) : null}
+      )}
     </View>
   );
 }

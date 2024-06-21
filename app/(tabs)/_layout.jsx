@@ -35,8 +35,8 @@ export default function TabLayout() {
             <Image
               source={homeIcon}
               style={{
-                width: focused ? 48 : 48, // Change size when focused
-                height: focused ? 48 : 48,
+                width: 48,
+                height: 48,
                 tintColor: focused ? color : "gray", // Optional: change color when focused
               }}
             />
@@ -51,8 +51,8 @@ export default function TabLayout() {
             <Image
               source={collectionsIcon}
               style={{
-                width: focused ? 48 : 48, // Change size when focused
-                height: focused ? 48 : 48,
+                width: 48,
+                height: 48,
                 tintColor: focused ? color : "gray", // Optional: change color when focused
               }}
             />
@@ -67,8 +67,8 @@ export default function TabLayout() {
             <Image
               source={plusIcon}
               style={{
-                width: focused ? 48 : 48, // Change size when focused
-                height: focused ? 48 : 48,
+                width: 48,
+                height: 48,
                 tintColor: focused ? color : "gray", // Optional: change color when focused
               }}
             />
@@ -83,8 +83,8 @@ export default function TabLayout() {
             <Image
               source={cartIcon}
               style={{
-                width: focused ? 48 : 48, // Change size when focused
-                height: focused ? 48 : 48,
+                width: 48,
+                height: 48,
                 tintColor: focused ? color : "gray", // Optional: change color when focused
               }}
             />
@@ -99,8 +99,8 @@ export default function TabLayout() {
             <Image
               source={profileIcon}
               style={{
-                width: focused ? 50 : 50, // Change size when focused
-                height: focused ? 50 : 50,
+                width: 50,
+                height: 50,
                 tintColor: focused ? color : "gray", // Optional: change color when focused
               }}
             />

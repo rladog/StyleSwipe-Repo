@@ -8,6 +8,7 @@ to the user's cart data inside the database
 
 export default async function addItemToCart(itemId) {
   let userId = await getUserId();
+  console.log(userId);
 
   if (!userId) {
     alert("Error getting login info");
@@ -46,14 +47,14 @@ export default async function addItemToCart(itemId) {
     //Create a new object with the updated array
     const updates = {
       user_id: userId,
-      cartItemIdArray,
+      cart_array: cartItemIdArray,
     };
 
     //Update the user's information with the updated array
     //Report errors if there are any
-    const { error } = await supabase.from("collections").upsert(updates);
+    const { error } = await supabase.from("cart").upsert(updates);
     if (error) {
-      alert(`Error saving item #${itemId} to ${collectionName}`);
+      alert(`Error saving item #${itemId} to cart`);
       console.log(error);
       return false;
     }

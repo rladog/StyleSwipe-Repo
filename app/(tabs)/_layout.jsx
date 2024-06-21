@@ -122,6 +122,13 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="profile/signOut"
+        options={{
+          href: null,
+          title: "Sign out",
+        }}
+      />
+      <Tabs.Screen
         name="listings/newListing"
         options={{
           href: null,

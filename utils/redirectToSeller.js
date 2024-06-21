@@ -16,7 +16,7 @@ export default function redirectToSeller(
   //open up Telegram with the message informing the user
   //about buying the item
   const telegramUsername = telegramId; // Replace with the target user's Telegram username
-  const message = `Hello! I'm interested in ${itemName} you posted on StyleSwipe :)`; // Replace with your message
+  const message = `Hello! I'm interested in "${itemName}" you posted on StyleSwipe :)`; // Replace with your message
   const telegramUrl = `https://t.me/${telegramUsername}?text=${encodeURIComponent(
     message
   )}`;

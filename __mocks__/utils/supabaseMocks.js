@@ -29,7 +29,7 @@ export function mockUtils() {
   Mock getUserId() function to avoid making a backend call
   and instead return an id of a test account
   */
-  jest.spyOn(getUserId, "default").mockImplemntation(
+  jest.spyOn(getUserId, "default").mockImplementation(
     jest.fn(async () => {
       return "36ca95ab-f190-4b49-ac31-f27c4ac82425";
     })

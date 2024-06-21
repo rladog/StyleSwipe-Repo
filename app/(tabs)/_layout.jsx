@@ -10,6 +10,7 @@ const homeIcon = require("@/assets/icons/home-icon.png");
 const collectionsIcon = require("@/assets/icons/collections-icon.png");
 const profileIcon = require("@/assets/icons/profile-icon.png");
 const cartIcon = require("@/assets/icons/cart-icon.png");
+const plusIcon = require("@/assets/icons/plus-icon.png");
 
 export default function TabLayout() {
   return (
@@ -59,6 +60,22 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="listings/index"
+        options={{
+          title: "Listings",
+          tabBarIcon: ({ color, focused }) => (
+            <Image
+              source={plusIcon}
+              style={{
+                width: focused ? 48 : 48, // Change size when focused
+                height: focused ? 48 : 48,
+                tintColor: focused ? color : "gray", // Optional: change color when focused
+              }}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="cart/index"
         options={{
           title: "Cart",
@@ -82,8 +99,8 @@ export default function TabLayout() {
             <Image
               source={profileIcon}
               style={{
-                width: focused ? 48 : 48, // Change size when focused
-                height: focused ? 48 : 48,
+                width: focused ? 50 : 50, // Change size when focused
+                height: focused ? 50 : 50,
                 tintColor: focused ? color : "gray", // Optional: change color when focused
               }}
             />

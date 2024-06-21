@@ -1,6 +1,11 @@
 import { Linking } from "react-native";
 
-function redirectToSeller(isUser, telegramId, itemName, altSite) {
+export default function redirectToSeller(
+  isUser,
+  telegramId,
+  itemName,
+  altSite
+) {
   //If the seller is not a user,
   //redirect them to the brand site
   if (!isUser) {

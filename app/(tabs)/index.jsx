@@ -15,7 +15,7 @@ export default function HomeScreen() {
 
   useEffect(() => {
     getCards().then((cards) => setCards(cards));
-  }, []);
+  }, [session]);
 
   if (!sessionExists) return <Auth />;
   if (!cards) {

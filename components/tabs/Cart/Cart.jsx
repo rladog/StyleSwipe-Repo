@@ -102,8 +102,10 @@ export default function Cart({ cartData, deleteFromCartFn, purchaseItemFn }) {
       >
         <Text
           style={{
+            paddingHorizontal: 5,
             fontFamily: "Satoshi-Regular",
-            fontSize: 18,
+            fontSize: 16,
+            textAlign: "center",
           }}
         >
           {item.ProductTitle}

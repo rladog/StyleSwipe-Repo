@@ -1,6 +1,5 @@
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import CardDeck from "@/components/tabs/Home/CardDeck";
-import { useEffect, useState } from "react";
 import redirect from "@/utils/redirect";
 const cartIcon = require("@/assets/icons/cart-icon.png");
 

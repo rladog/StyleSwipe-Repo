@@ -33,19 +33,6 @@ export default function Profile() {
           <Text style={styles.optionText}>Change password</Text>
         </Pressable>
 
-        {/* Button for redirecting users to see the listings they created */}
-        <Pressable style={styles.optionItem}>
-          <Text style={styles.optionText}>View my listings</Text>
-        </Pressable>
-
-        {/* Button for redirecting users to a "create listing" tab */}
-        <Pressable
-          style={styles.optionItem}
-          onPress={() => redirect("/listings/newListing")}
-        >
-          <Text style={styles.optionText}>Create new listing</Text>
-        </Pressable>
-
         {/* Button for allowing users to wipe their product recommendation algorithm tab */}
         <Pressable style={styles.optionItem}>
           <Text style={styles.optionText}>Wipe algorithm</Text>
@@ -101,7 +88,8 @@ const styles = StyleSheet.create({
     width: "90%",
     // borderWidth: 2,
     // borderColor: "black",
-    justifyContent: "space-between",
+    justifyContent: "center",
+    gap: 10,
     height: "80%",
   },
   optionItem: {

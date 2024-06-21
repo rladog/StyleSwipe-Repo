@@ -78,7 +78,7 @@ export default function ItemDetails({ itemObj, closeFn, sellerFn, cartFn }) {
       <View style={buttonStyles.bottomButtonHolder}>
         <Pressable
           style={buttonStyles.bottomButton}
-          onPress={(itemObj) => sellerFn(itemObj)}
+          onPress={() => sellerFn(itemObj)}
         >
           <Text style={buttonStyles.bottomButtonText}>
             {/* 
@@ -91,7 +91,7 @@ export default function ItemDetails({ itemObj, closeFn, sellerFn, cartFn }) {
         <Pressable style={buttonStyles.bottomButton}>
           <Text
             style={buttonStyles.bottomButtonText}
-            onPress={(itemObj) => cartFn(itemObj)}
+            onPress={() => cartFn(itemObj)}
           >
             Add to cart
           </Text>

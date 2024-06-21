@@ -9,6 +9,7 @@ import { Image } from "react-native";
 const homeIcon = require("@/assets/icons/home-icon.png");
 const collectionsIcon = require("@/assets/icons/collections-icon.png");
 const profileIcon = require("@/assets/icons/profile-icon.png");
+const cartIcon = require("@/assets/icons/cart-icon.png");
 
 export default function TabLayout() {
   return (
@@ -48,6 +49,22 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => (
             <Image
               source={collectionsIcon}
+              style={{
+                width: focused ? 48 : 48, // Change size when focused
+                height: focused ? 48 : 48,
+                tintColor: focused ? color : "gray", // Optional: change color when focused
+              }}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="cart/index"
+        options={{
+          title: "Cart",
+          tabBarIcon: ({ color, focused }) => (
+            <Image
+              source={cartIcon}
               style={{
                 width: focused ? 48 : 48, // Change size when focused
                 height: focused ? 48 : 48,

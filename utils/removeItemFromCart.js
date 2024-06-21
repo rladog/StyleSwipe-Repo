@@ -18,8 +18,8 @@ export default async function removeItemFromCart(itemId) {
   //Get the cart_array array from the database
   //with the current user's user ID
   const { data, error } = await supabase
-    .from("collections")
-    .select("collection_obj")
+    .from("cart")
+    .select("cart_array")
     .eq("user_id", userId)
     .single();
 
@@ -33,7 +33,7 @@ export default async function removeItemFromCart(itemId) {
     //Get the cart_array of the user from the database,
     //which contains only the ids of the items that the user saved to the cart
     //inside an array
-    let cartItemIdArray = data?.cartItemIdArray;
+    let cartItemIdArray = data?.cart_array;
 
     //Remove the given item id from the array
     cartItemIdArray = cartItemIdArray.filter((x) => x != itemId);
@@ -41,13 +41,13 @@ export default async function removeItemFromCart(itemId) {
     //Upsert the newly updated cart_array back into the database
     const updates = {
       user_id: userId,
-      cartItemIdArray,
+      cart_array: cartItemIdArray,
     };
 
-    const { error } = await supabase.select("collections").upsert(updates);
+    const { error } = await supabase.from("cart").upsert(updates);
 
     if (error) {
-      alert(`Error removing items from ${collectionName}`);
+      alert(`Error removing item from cart`);
       console.log(error);
       return false;
     }

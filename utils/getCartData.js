@@ -12,7 +12,7 @@ export default async function getCartData() {
   const { data, error } = supabase
     .from("cart")
     .select("cart_array")
-    .eq(id, userId)
+    .eq("user_id", userId)
     .single();
 
   if (error) {

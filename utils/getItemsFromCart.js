@@ -19,7 +19,7 @@ export default async function getItemsFromCart() {
   //which contains only the id of the items saved to the user's cart
   //based on this user's id
   const { data, error } = await supabase
-    .from("collections")
+    .from("cart")
     .select("cart_array")
     .eq("user_id", userId)
     .single();

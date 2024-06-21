@@ -37,13 +37,13 @@ function Details({ itemObj, closeFn, showCollectionsFn }) {
         </View>
 
         {/* 
-          DetailedItemCard component is used to show the details about the item
-          based on information stored in the itemObj prop
-          */}
+        DetailedItemCard component is used to show the details about the item
+        based on information stored in the itemObj prop
+        */}
         <DetailedItemCard
           height={"100%"}
           width={"100%"}
-          gradientHeight={0.6}
+          gradientHeight={0.5}
           imageURL={itemObj.ImageURL}
           name={itemObj.ProductTitle}
           nameSize={40}
@@ -54,17 +54,12 @@ function Details({ itemObj, closeFn, showCollectionsFn }) {
           subtype={itemObj.SubCategory}
           subtypeSize={18}
         />
-        <View>
-          <Pressable>
-            <Text>Press me!</Text>
-          </Pressable>
-        </View>
       </View>
     </View>
   );
 }
 
-export default function ItemDetails({ itemObj, closeFn }) {
+export default function ItemDetails({ itemObj, closeFn, sellerFn, cartFn }) {
   // State for whether the collection menu,
   // which shows collections the current clothing item can be saved to,
   // should be shown or not
@@ -77,6 +72,31 @@ export default function ItemDetails({ itemObj, closeFn }) {
         closeFn={closeFn}
         showCollectionsFn={() => setShowCollectionMenu(true)}
       />
+      {/* 
+      Button holder at the bottom for users to perform additional actions
+      */}
+      <View style={buttonStyles.bottomButtonHolder}>
+        <Pressable
+          style={buttonStyles.bottomButton}
+          onPress={(itemObj) => sellerFn(itemObj)}
+        >
+          <Text style={buttonStyles.bottomButtonText}>
+            {/* 
+            Conditionally render text 
+            depending on if the seller of the item is another user or a brand 
+            */}
+            {itemObj.is_listing ? "Contact seller" : "Visit seller site"}
+          </Text>
+        </Pressable>
+        <Pressable style={buttonStyles.bottomButton}>
+          <Text
+            style={buttonStyles.bottomButtonText}
+            onPress={(itemObj) => cartFn(itemObj)}
+          >
+            Add to cart
+          </Text>
+        </Pressable>
+      </View>
       {/* 
       The CollectionMenu component which is displayed conditionally 
       based on the showCollectionMenu state 
@@ -93,7 +113,7 @@ export default function ItemDetails({ itemObj, closeFn }) {
 const styles = StyleSheet.create({
   modal: {
     width: "100%",
-    height: "100%",
+    height: "95%",
     backgroundColor: "white",
     position: "absolute",
     zIndex: 3,
@@ -127,5 +147,38 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: "center",
     textShadowRadius: 6,
+  },
+});
+
+const buttonStyles = StyleSheet.create({
+  bottomButtonHolder: {
+    height: "10%",
+    // backgroundColor: "rgb(255, 255, 247)",
+    position: "absolute",
+    zIndex: 5,
+    bottom: 0,
+    display: "flex",
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  bottomButton: {
+    borderWidth: 2,
+    borderColor: "black",
+    // borderLeftWidth: 1,
+    // borderTopWidth: 1,
+    // borderColor: "rgb(255, 255, 247)",
+    borderColor: "black",
+    width: "50%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    // backgroundColor: "black",
+    backgroundColor: "rgb(255,255,247)",
+  },
+  bottomButtonText: {
+    fontFamily: "Satoshi-Black",
+    fontSize: 22,
+    // color: "rgb(255, 255, 247)",
   },
 });

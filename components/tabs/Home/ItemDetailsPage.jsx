@@ -65,6 +65,19 @@ export default function ItemDetails({ itemObj, closeFn, sellerFn, cartFn }) {
   // should be shown or not
   const [showCollectionMenu, setShowCollectionMenu] = useState(false);
 
+  const pressableStyleFunction =
+    (defaultStyleObj, defaultColor, onPressColor) =>
+    ({ pressed }) => {
+      console.log(defaultColor);
+      console.log(onPressColor);
+      console.log(defaultStyleObj);
+      return [
+        {
+          backgroundColor: pressed ? onPressColor : defaultColor,
+        },
+        defaultStyleObj,
+      ];
+    };
   return (
     <>
       <Details
@@ -77,7 +90,11 @@ export default function ItemDetails({ itemObj, closeFn, sellerFn, cartFn }) {
       */}
       <View style={buttonStyles.bottomButtonHolder}>
         <Pressable
-          style={buttonStyles.bottomButton}
+          style={pressableStyleFunction(
+            buttonStyles.bottomButton,
+            "rgb(255, 255, 247)",
+            "rgb(235, 235, 227)"
+          )}
           onPress={() => sellerFn(itemObj)}
         >
           <Text style={buttonStyles.bottomButtonText}>
@@ -88,13 +105,15 @@ export default function ItemDetails({ itemObj, closeFn, sellerFn, cartFn }) {
             {itemObj.is_listing ? "Contact seller" : "Visit seller site"}
           </Text>
         </Pressable>
-        <Pressable style={buttonStyles.bottomButton}>
-          <Text
-            style={buttonStyles.bottomButtonText}
-            onPress={() => cartFn(itemObj)}
-          >
-            Add to cart
-          </Text>
+        <Pressable
+          style={pressableStyleFunction(
+            buttonStyles.bottomButton,
+            "rgb(255, 255, 247)",
+            "rgb(235, 235, 227)"
+          )}
+          onPress={() => cartFn(itemObj)}
+        >
+          <Text style={buttonStyles.bottomButtonText}>Add to cart</Text>
         </Pressable>
       </View>
       {/* 
@@ -174,7 +193,7 @@ const buttonStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     // backgroundColor: "black",
-    backgroundColor: "rgb(255,255,247)",
+    // backgroundColor: "rgb(255,255,247)",
   },
   bottomButtonText: {
     fontFamily: "Satoshi-Black",

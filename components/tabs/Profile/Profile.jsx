@@ -20,6 +20,13 @@ export default function Profile() {
         {/* Button for redirecting users to a "change email" tab */}
         <Pressable
           style={styles.optionItem}
+          onPress={() => redirect("/collection/")}
+        >
+          <Text style={styles.optionText}>See my collections</Text>
+        </Pressable>
+        {/* Button for redirecting users to a "change email" tab */}
+        <Pressable
+          style={styles.optionItem}
           onPress={() => redirect("/profile/newEmail")}
         >
           <Text style={styles.optionText}>Change email address</Text>

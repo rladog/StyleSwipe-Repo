@@ -108,6 +108,13 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="collection/index"
+        options={{
+          title: "Collections",
+          href: null,
+        }}
+      />
+      <Tabs.Screen
         name="itemDetail/[itemId]"
         options={{
           href: null,

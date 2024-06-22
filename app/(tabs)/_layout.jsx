@@ -92,6 +92,22 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="listings/index"
+        options={{
+          title: "Listings",
+          tabBarIcon: ({ color, focused }) => (
+            <Image
+              source={plusIcon}
+              style={{
+                width: 48,
+                height: 48,
+                tintColor: focused ? color : "gray", // Optional: change color when focused
+              }}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="profile/index"
         options={{
           title: "Profile",

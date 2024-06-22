@@ -37,13 +37,13 @@ export default async function createListing(imageURL, name, gender, category) {
     return false;
   }
 
-  let ProductArray = await getListings();
+  let listings_array = await getListings();
 
-  ProductArray.push(itemObj);
+  listings_array.push(itemObj);
 
   let listingObj = {
     user_id: userId,
-    ProductArray,
+    listings_array,
   };
 
   const { listingError } = await supabase.from("listings").upsert(listingObj);

@@ -13,7 +13,7 @@ export default async function getListings() {
 
   const { data, error } = await supabase
     .from("listings")
-    .select("ProductArray")
+    .select("listings_array")
     .eq("user_id", userId)
     .single();
 
@@ -24,6 +24,6 @@ export default async function getListings() {
   }
 
   if (data) {
-    return data?.ProductArray;
+    return data?.listings_array;
   }
 }

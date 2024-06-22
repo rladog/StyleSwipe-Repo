@@ -100,8 +100,8 @@ export default function TabLayout() {
             <Image
               source={profileIcon}
               style={{
-                width: 50,
-                height: 50,
+                width: 48,
+                height: 48,
                 tintColor: focused ? color : "gray", // Optional: change color when focused
               }}
             />

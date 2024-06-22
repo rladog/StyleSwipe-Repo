@@ -11,6 +11,7 @@ const collectionsIcon = require("@/assets/icons/collections-icon.png");
 const profileIcon = require("@/assets/icons/profile-icon.png");
 const cartIcon = require("@/assets/icons/cart-icon.png");
 const plusIcon = require("@/assets/icons/plus-icon.png");
+const exploreIcon = require("@/assets/icons/explore-icon.png");
 
 export default function TabLayout() {
   return (
@@ -44,28 +45,12 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="collection/index"
+        name="explore/index"
         options={{
-          title: "Collections",
+          title: "Explore",
           tabBarIcon: ({ color, focused }) => (
             <Image
-              source={collectionsIcon}
-              style={{
-                width: 48,
-                height: 48,
-                tintColor: focused ? color : "gray", // Optional: change color when focused
-              }}
-            />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="listings/index"
-        options={{
-          title: "Listings",
-          tabBarIcon: ({ color, focused }) => (
-            <Image
-              source={plusIcon}
+              source={exploreIcon}
               style={{
                 width: 48,
                 height: 48,

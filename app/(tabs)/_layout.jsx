@@ -175,6 +175,13 @@ export default function TabLayout() {
           title: "New Listing",
         }}
       />
+      <Tabs.Screen
+        name="listings/myListings"
+        options={{
+          href: null,
+          title: "My Listings",
+        }}
+      />
     </Tabs>
   );
 }

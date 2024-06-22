@@ -126,7 +126,7 @@ export default function NewListingTab() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "rgb(255, 255, 247)",
-    // minHeight: "100%",
+    minHeight: "100%",
     // flex: 1,
     alignItems: "flex-start",
     justifyContent: "flex-start",

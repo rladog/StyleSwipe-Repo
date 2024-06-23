@@ -18,6 +18,7 @@ export default function HomeScreen() {
   }, [session]);
 
   if (!sessionExists) return <Auth />;
+
   if (!cards) {
     return <LoadingScreen loadingText={"Loading items..."} />;
   }

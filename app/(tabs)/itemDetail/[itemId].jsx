@@ -5,7 +5,7 @@ import getItemObjById from "@/utils/getItemObjById";
 import redirect from "@/utils/redirect";
 import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
 import redirectToSeller from "@/utils/redirectToSeller";
-import addItemToCart from "@/utils/addItemToCart";
+import addItemToCart from "@/utils/cart/addItemToCart";
 
 export default function itemDetail() {
   const { itemId } = useLocalSearchParams();

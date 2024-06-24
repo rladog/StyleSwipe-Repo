@@ -1,5 +1,5 @@
-import { supabase } from "@/utils/supabase";
-import getUserId from "@/utils/getUserId";
+import { supabase } from "@/utils/common/supabase";
+import getUserId from "@/utils/common/getUserId";
 
 /*
 Utility function to add the given item Id

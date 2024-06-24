@@ -3,8 +3,8 @@ import useSession from "@/hooks/useSession";
 import Auth from "@/components/tabs/_common/Auth";
 import { useCallback, useState } from "react";
 import { useFocusEffect, useLocalSearchParams } from "expo-router";
-import getSingleCollection from "@/utils/getSingleCollection";
-import removeItemFromCollection from "@/utils/removeItemFromCollection";
+import getSingleCollection from "@/utils/collections/getSingleCollection";
+import removeItemFromCollection from "@/utils/collections/removeItemFromCollection";
 
 export default function Collection() {
   const { collectionName } = useLocalSearchParams();

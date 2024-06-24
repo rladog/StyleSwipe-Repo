@@ -9,9 +9,9 @@ import {
   Pressable,
 } from "react-native";
 import NewCollectionForm from "@/components/tabs/Home/NewCollectionForm";
-import getCollections from "@/utils/getCollections";
-import addItemToCollection from "@/utils/addItemToCollection";
-import createCollection from "@/utils/createCollection";
+import getCollections from "@/utils/collections/getCollections";
+import addItemToCollection from "@/utils/collections/addItemToCollection";
+import createCollection from "@/utils/collections/createCollection";
 
 /*
 Component to display the collections the user can add a clothing item into

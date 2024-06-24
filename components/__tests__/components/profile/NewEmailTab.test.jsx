@@ -1,4 +1,4 @@
-import * as changeEmail from "@/utils/changeEmail";
+import * as changeEmail from "@/utils/profile/changeEmail";
 import NewEmailTab from "@/components/tabs/Profile/NewEmailTab";
 import {
   render,

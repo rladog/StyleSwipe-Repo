@@ -2,7 +2,7 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import React, { useCallback, useState } from "react";
 import { AppState } from "react-native";
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/common/supabase";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive

@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/common/supabase";
 //Function for getting an array of item datas (JSON format)
 //from a given array of item IDs
 

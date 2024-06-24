@@ -8,9 +8,9 @@ import {
 } from "@testing-library/react-native";
 import NewListingTab from "@/components/tabs/Profile/NewListingTab";
 import { mockUtils } from "@/__mocks__/utils/supabaseMocks";
-import * as pickImage from "@/utils/pickImage";
-import * as uploadImage from "@/utils/uploadImage";
-import * as createListing from "@/utils/createListing";
+import * as pickImage from "@/utils/listings/pickImage";
+import * as uploadImage from "@/utils/listings/uploadImage";
+import * as createListing from "@/utils/listings/createListing";
 
 jest.useFakeTimers();
 

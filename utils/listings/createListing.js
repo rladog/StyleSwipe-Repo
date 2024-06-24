@@ -1,7 +1,7 @@
-import { supabase } from "@/utils/supabase";
-import getNewItemId from "@/utils/getNewItemId";
-import getListings from "@/utils/getListings";
-import getUserId from "@/utils/getUserId";
+import { supabase } from "@/utils/common/supabase";
+import getNewItemId from "@/utils/listings/getNewItemId";
+import getListings from "@/utils/listings/getListings";
+import getUserId from "@/utils/common/getUserId";
 export default async function createListing(imageURL, name, gender, category) {
   let userId = await getUserId();
 

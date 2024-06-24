@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/common/supabase";
 
 //Takes in new password, a confirmation (repeat) of the new password,
 //a function to call on failing to change password

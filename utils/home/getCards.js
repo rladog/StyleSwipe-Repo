@@ -1,5 +1,5 @@
-import { supabase } from "@/utils/supabase";
-import getStartIndex from "@/utils/getStartIndex";
+import { supabase } from "@/utils/common/supabase";
+import getStartIndex from "@/utils/home/getStartIndex";
 
 export default async function getCards() {
   //Get the latest index the user was on previously

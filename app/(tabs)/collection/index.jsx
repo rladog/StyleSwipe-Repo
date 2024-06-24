@@ -1,8 +1,8 @@
-import Collections from "../../../components/tabs/Collections/Collections";
+import Collections from "@/components/tabs/Collections/Collections";
 import useSession from "@/hooks/useSession";
 import Auth from "@/components/tabs/_common/Auth";
 import { useCallback, useEffect, useState } from "react";
-import getCollections from "@/utils/getCollections";
+import getCollections from "@/utils/collections/getCollections";
 import { useFocusEffect } from "expo-router";
 import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
 

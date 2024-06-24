@@ -2,7 +2,7 @@ import Swiper from "react-native-deck-swiper";
 import { useState } from "react";
 import { StyleSheet } from "react-native";
 import ItemCard from "@/components/tabs/_common/ItemCard";
-import incrementStartIndex from "@/utils/incrementStartIndex";
+import incrementStartIndex from "@/utils/home/incrementStartIndex";
 /*
 Component for displaying the deck of swipable cards on the home screen
 Uses the react-native-deck-swiper library for the card swiping and tapping logic

@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import { Redirect, useNavigation } from "expo-router";
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/common/supabase";
 export default function SignOutTab() {
   const navigation = useNavigation();
   navigation.reset({

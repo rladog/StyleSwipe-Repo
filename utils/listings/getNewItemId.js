@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/common/supabase";
 
 export default async function getNewItemId() {
   let { count, error } = await supabase

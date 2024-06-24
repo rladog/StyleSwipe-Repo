@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text } from "react-native";
 import CollectionItem from "./CollectionItem";
 import { useEffect, useState } from "react";
-import redirect from "@/utils/redirect";
+import redirect from "@/utils/common/redirect";
 
 /*
 Component to display the Collections tab

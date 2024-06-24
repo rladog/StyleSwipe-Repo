@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { Alert, Modal, StyleSheet, View, AppState } from "react-native";
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/common/supabase";
 import { Button, Input } from "@rneui/themed";
-import redirect from "@/utils/redirect";
+import redirect from "@/utils/common/redirect";
 import { router } from "expo-router";
 
 export default function SignUp({ changeToSignInFn }) {

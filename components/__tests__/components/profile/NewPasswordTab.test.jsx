@@ -1,4 +1,4 @@
-import * as changePassword from "@/utils/changePassword";
+import * as changePassword from "@/utils/profile/changePassword";
 import NewPasswordTab from "@/components/tabs/Profile/NewPasswordTab";
 import {
   screen,

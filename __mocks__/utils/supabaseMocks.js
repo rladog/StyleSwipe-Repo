@@ -1,7 +1,7 @@
-import * as getCollections from "@/utils/getCollections";
-import * as createCollection from "@/utils/createCollection";
+import * as getCollections from "@/utils/collections/getCollections";
+import * as createCollection from "@/utils/collections/createCollection";
 import * as expoRouter from "expo-router";
-import * as getUserId from "@/utils/getUserId";
+import * as getUserId from "@/utils/common/getUserId";
 
 export function mockUtils() {
   //Hide error messages regarding asynchronus state updates

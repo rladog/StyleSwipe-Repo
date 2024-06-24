@@ -2,10 +2,10 @@ import Home from "@/components/tabs/Home/Home";
 import useSession from "@/hooks/useSession";
 import Auth from "@/components/tabs/_common/Auth";
 import { useEffect, useState } from "react";
-import getCards from "@/utils/getCards";
+import getCards from "@/utils/home/getCards";
 import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
-import addItemToCollection from "@/utils/addItemToCollection";
-import redirect from "@/utils/redirect";
+import addItemToCollection from "@/utils/collections/addItemToCollection";
+import redirect from "@/utils/common/redirect";
 import useFontImport from "@/hooks/useFontImport";
 
 export default function HomeScreen() {

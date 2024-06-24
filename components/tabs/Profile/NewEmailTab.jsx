@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, TextInput, Pressable, Text, StyleSheet } from "react-native";
-import changeEmail from "@/utils/changeEmail";
+import changeEmail from "@/utils/profile/changeEmail";
 
 /*
 Component for users to change their email

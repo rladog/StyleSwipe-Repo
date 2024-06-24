@@ -9,9 +9,9 @@ import {
   Image,
 } from "react-native";
 import { useState } from "react";
-import pickImage from "@/utils/pickImage";
-import uploadImage from "@/utils/uploadImage";
-import createListing from "@/utils/createListing";
+import pickImage from "@/utils/listings/pickImage";
+import uploadImage from "@/utils/listings/uploadImage";
+import createListing from "@/utils/listings/createListing";
 const trashIcon = require("@/assets/icons/trash-icon.png");
 
 /*

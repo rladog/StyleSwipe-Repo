@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, Pressable } from "react-native";
-import redirect from "@/utils/redirect";
+import redirect from "@/utils/common/redirect";
 
 /*
 Component to be displayed on the Listings tab

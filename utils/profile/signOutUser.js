@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/common/supabase";
 import { router } from "expo-router";
 
 export default async function signOutUser(navigation) {

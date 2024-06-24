@@ -1,5 +1,5 @@
-import { supabase } from "@/utils/supabase";
-import getUserId from "@/utils/getUserId";
+import { supabase } from "@/utils/common/supabase";
+import getUserId from "@/utils/common/getUserId";
 
 export default async function createCollection(collectionName) {
   let userId = await getUserId();

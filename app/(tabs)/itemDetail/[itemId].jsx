@@ -1,10 +1,10 @@
 import ItemDetailsPage from "@/components/tabs/Home/ItemDetailsPage";
 import { useCallback, useEffect, useState } from "react";
 import { useFocusEffect, useLocalSearchParams } from "expo-router";
-import getItemObjById from "@/utils/getItemObjById";
-import redirect from "@/utils/redirect";
+import getItemObjById from "@/utils/common/getItemObjById";
+import redirect from "@/utils/common/redirect";
 import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
-import redirectToSeller from "@/utils/redirectToSeller";
+import redirectToSeller from "@/utils/common/redirectToSeller";
 import addItemToCart from "@/utils/cart/addItemToCart";
 
 export default function itemDetail() {

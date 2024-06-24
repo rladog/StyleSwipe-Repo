@@ -1,6 +1,6 @@
 import "react-native-url-polyfill/auto";
-import { supabase } from "@/utils/supabase";
-import getUserId from "@/utils/getUserId";
+import { supabase } from "@/utils/common/supabase";
+import getUserId from "@/utils/common/getUserId";
 
 export default async function getCollections() {
   let userId = await getUserId();

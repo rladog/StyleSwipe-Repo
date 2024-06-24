@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, TextInput, Pressable, Text, StyleSheet } from "react-native";
-import changePassword from "@/utils/changePassword";
+import changePassword from "@/utils/profile/changePassword";
 
 /*
 Component for users to change their password

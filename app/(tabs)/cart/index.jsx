@@ -2,7 +2,7 @@ import Cart from "@/components/tabs/Cart/Cart";
 import { useCallback, useState } from "react";
 import { useFocusEffect, useLocalSearchParams } from "expo-router";
 import getItemsFromCart from "@/utils/cart/getItemsFromCart";
-import removeItemFromCart from "@/utils/removeItemFromCart";
+import removeItemFromCart from "@/utils/cart/removeItemFromCart";
 
 export default function CartScreen() {
   const [cartData, setCartData] = useState([]);

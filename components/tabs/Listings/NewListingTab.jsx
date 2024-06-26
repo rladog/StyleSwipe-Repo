@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     minHeight: "100%",
     // flex: 1,
     alignItems: "flex-start",
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
   },
 
   headingContainer: {

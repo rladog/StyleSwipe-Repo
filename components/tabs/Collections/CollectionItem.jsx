@@ -1,18 +1,24 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { Link } from "expo-router";
-import useFontImport from "@/hooks/useFontImport";
+import { Pressable } from "react-native";
 
-export default function CollectionItem({ href, name }) {
-  const { fontsReady } = useFontImport();
-  if (!fontsReady) {
-    return null; // Render nothing while fonts are loading
-  }
+/*
+Component to render individual collections
+shown in the Collections tab
+
+Takes in the name of the collection
+and a callback function to be called when the collection is pressed
+*/
+
+export default function CollectionItem({ name, onPressFn }) {
   return (
-    <View style={styles.collectionItem}>
-      <Link href={href} style={styles.collectionItemLink}>
-        <Text style={styles.collectionItemText}>{name}</Text>
-      </Link>
-    </View>
+    <Pressable
+      style={styles.collectionItem}
+      onPress={onPressFn}
+      testID="collection-item"
+    >
+      <Text style={styles.collectionItemText}>{name}</Text>
+    </Pressable>
   );
 }
 
@@ -35,15 +41,10 @@ const styles = StyleSheet.create({
     width: "100%",
     textAlign: "center",
     height: "100%",
-    paddingTop: 30,
   },
   collectionItemText: {
-    width: "100%",
-    height: "100%",
     fontSize: 22,
     textAlign: "center",
     fontFamily: "Satoshi-Bold",
-    display: "flex",
-    flex: 1,
   },
 });

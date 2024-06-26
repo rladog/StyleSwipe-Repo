@@ -1,7 +1,17 @@
 import { StyleSheet, View, Text, Image } from "react-native";
-import { useFonts } from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
-import useFontImport from "@/hooks/useFontImport";
+
+/*
+Component to display an item in a card format,
+displaying its name and its image.
+
+Takes in height, width,
+gradientHeight, which is a value between 0 and 1 that determines
+how much of the card is taken up by a gradient from the bottom,
+the name of the item,
+the font size for the name to be displayed,
+and a URL for the item image to be displayed
+*/
 
 export default function ItemCard({
   height,
@@ -11,14 +21,8 @@ export default function ItemCard({
   name,
   nameSize,
 }) {
-  const { fontsReady } = useFontImport();
-
-  if (!fontsReady) {
-    return null; // Render nothing while fonts are loading
-  }
-
   return (
-    <View style={{ height, width, ...styles.card }}>
+    <View style={{ height, width, ...styles.card }} testID="item-card">
       {/* Gradient to make the description readable */}
       <LinearGradient
         style={styles.gradient}

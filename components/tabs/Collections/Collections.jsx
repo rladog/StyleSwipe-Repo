@@ -1,34 +1,42 @@
 import { StyleSheet, View, Text } from "react-native";
 import CollectionItem from "./CollectionItem";
 import { useEffect, useState } from "react";
-import useFontImport from "@/hooks/useFontImport";
+import redirect from "@/utils/common/redirect";
+
+/*
+Component to display the Collections tab
+
+Takes in an object with keys equal to collection names
+and values equal to an array of id of items stored in that collection
+*/
 
 export default function Collections({ collectionsProp }) {
-  const { fontsReady } = useFontImport();
   //Store cards retrieved from database as state
   const [collections, setCollections] = useState(collectionsProp);
 
+  //Calls useEffect every time the collection object prop is changed
+  //to properly update the state
   useEffect(() => {
     setCollections(collectionsProp);
   }, [collectionsProp]);
 
-  if (!fontsReady) {
-    return null; // Render nothing while fonts are loading
-  }
-
   return (
     <>
       {collections && (
-        <View style={styles.container}>
+        <View style={styles.container} testID="collections-container">
           <View style={styles.headingContainer}>
             <Text style={styles.titleText}>Collections</Text>
           </View>
 
-          <View style={styles.collectionsHolder}>
+          {/* 
+          Displays the current collections passed in as prop
+          by rendering them with the CollectionItem component
+          */}
+          <View style={styles.collectionsHolder} testID="collections-list">
             {Object.entries(collections).map((keyValArray) => (
               <CollectionItem
                 key={keyValArray[0]}
-                href={`/collection/${keyValArray[0]}`}
+                onPressFn={() => redirect(`/collection/${keyValArray[0]}`)}
                 name={keyValArray[0]}
               />
             ))}

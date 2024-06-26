@@ -1,43 +1,47 @@
 import { StyleSheet, View, Text } from "react-native";
-import { useFonts } from "expo-font";
 import CardDeck from "@/components/tabs/Home/CardDeck";
 import { useEffect, useState } from "react";
-import { supabase } from "@/utils/supabase";
-import useFontImport from "@/hooks/useFontImport";
-import addItemToCollection from "@/utils/addItemToCollection";
 
-export default function Home({ cardProp, session }) {
-  const { fontsReady } = useFontImport();
+/*
+Component to display the home page
+Uses the CardDeck component to display the swipable card deck
+
+Takes in an array of objects for information needed to display each cards
+and 3 callback functions to be called when cards are swiped left and right and double tapped
+*/
+
+export default function Home({
+  cardProp,
+  swipeLeftFn,
+  swipeRightFn,
+  doubleTapFn,
+}) {
   //Store cards retrieved from database as state
   const [cards, setCards] = useState(cardProp);
 
+  /*
+  Calls useEffect to update the "cards" state
+  whenever the cardProp passed in from its parent component is changed
+  */
   useEffect(() => {
     setCards(cardProp);
   }, [cardProp]);
 
-  if (!fontsReady) {
-    return null; // Render nothing while fonts are loading
-  }
-
   return (
     <>
-      {cards && (
-        <View style={styles.container}>
-          <View style={styles.headingContainer}>
-            <Text style={styles.titleText}>Swipe!</Text>
-          </View>
-          {cards && (
-            <CardDeck
-              session={session}
-              cards={cards}
-              swipeRightFn={(item) =>
-                addItemToCollection(session, item.ProductId, "Liked Items")
-              }
-              swipeLeftFn={(item) => null}
-            />
-          )}
+      <View testID="home-container" style={styles.container}>
+        <View style={styles.headingContainer}>
+          <Text style={styles.titleText}>Swipe!</Text>
         </View>
-      )}
+        {cards && (
+          <CardDeck
+            cards={cards}
+            swipeRightFn={(item) => swipeRightFn(item)}
+            swipeLeftFn={(item) => swipeLeftFn(item)}
+            doubleTapFn={(item) => doubleTapFn(item)}
+          />
+        )}
+      </View>
     </>
   );
 }

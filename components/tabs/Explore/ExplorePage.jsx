@@ -7,7 +7,7 @@ import {
   Text,
   Pressable,
 } from "react-native";
-import redirect from "@/utils/redirect";
+import redirect from "@/utils/common/redirect";
 import ItemCard from "@/components/tabs/_common/ItemCard"; // Import the ItemCard component
 
 /*

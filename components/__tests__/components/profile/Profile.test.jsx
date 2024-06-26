@@ -19,15 +19,11 @@ it(`Profile renders all options correctly`, async () => {
   await waitFor(() => {
     const changeEmail = getByText("Change email address");
     const changePassword = getByText("Change password");
-    const viewListings = getByText("View my listings");
-    const createListing = getByText("Create new listing");
     const wipeAlgorithm = getByText("Wipe algorithm");
     const signOut = getByText("Sign out");
 
     expect(changeEmail).toBeTruthy();
     expect(changePassword).toBeTruthy();
-    expect(viewListings).toBeTruthy();
-    expect(createListing).toBeTruthy();
     expect(wipeAlgorithm).toBeTruthy();
     expect(signOut).toBeTruthy();
   });

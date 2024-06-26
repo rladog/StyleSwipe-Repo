@@ -6,7 +6,7 @@ import {
   act,
   userEvent,
 } from "@testing-library/react-native";
-import NewListingTab from "@/components/tabs/Profile/NewListingTab";
+import NewListingTab from "@/components/tabs/Listings/NewListingTab";
 import { mockUtils } from "@/__mocks__/utils/supabaseMocks";
 import * as pickImage from "@/utils/listings/pickImage";
 import * as uploadImage from "@/utils/listings/uploadImage";

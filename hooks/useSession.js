@@ -1,6 +1,6 @@
 import "react-native-url-polyfill/auto";
 import { useState, useEffect, useCallback } from "react";
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/common/supabase";
 import Auth from "@/components/tabs/_common/Auth";
 import * as SplashScreen from "expo-splash-screen";
 import { View } from "react-native";

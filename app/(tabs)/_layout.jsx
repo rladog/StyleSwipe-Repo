@@ -61,6 +61,13 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="explore/allListings"
+        options={{
+          title: "Collections",
+          href: null,
+        }}
+      />
+      <Tabs.Screen
         name="cart/index"
         options={{
           title: "Cart",

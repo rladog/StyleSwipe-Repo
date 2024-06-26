@@ -9,7 +9,7 @@ and then renders it onto the page
 using a ScrollView for the users to see
 */
 
-function ExploreList({ children }) {
+export default function ExploreList({ children }) {
   return (
     <ScrollView
       contentContainerStyle={styles.container}
@@ -23,16 +23,16 @@ function ExploreList({ children }) {
   );
 }
 
-export default function Explore() {
-  return <ExploreList></ExploreList>;
-}
+// export default function Explore() {
+//   return <ExploreList></ExploreList>;
+// }
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "rgb(255, 255, 247)",
     minHeight: "100%",
     // flex: 1,
-    alignItems: "flex-start",
+    alignItems: "center",
     justifyContent: "flex-start",
   },
 
@@ -42,10 +42,10 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "baseline",
     paddingHorizontal: "5%",
-    top: "5%",
+    top: "7.5%",
     textAlignVertical: "center",
     paddingLeft: "4%",
-    marginBottom: "10%",
+    marginBottom: "18%",
   },
 
   titleText: {

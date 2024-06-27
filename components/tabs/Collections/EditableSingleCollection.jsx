@@ -22,6 +22,7 @@ export default function EditableSingleCollection({
   collectionName,
   collectionData,
   deleteFn,
+  tapFn,
 }) {
   //State to store the data of the collection
   const [collection, setCollection] = useState(collectionData);
@@ -93,7 +94,9 @@ export default function EditableSingleCollection({
   //using the ItemCard
   const renderItem = ({ item }) => (
     <Pressable
-      onPress={() => selectItem(item.ProductId)}
+      onPress={() => {
+        deleteMode ? selectItem(item.ProductId) : tapFn(item.ProductId);
+      }}
       style={{
         marginHorizontal: "3%",
         width: "45%",

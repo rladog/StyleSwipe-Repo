@@ -20,6 +20,7 @@ it(`EditableSingleCollection renders correctly`, async () => {
       collectionName={"Collection 1"}
       collectionData={[{ ProductTitle: "Item 1" }, { ProductTitle: "Item 2" }]}
       deleteFn={(itemName, collectionName) => null}
+      tapFn={(id) => null}
     />
   );
   await waitFor(() => {
@@ -50,6 +51,7 @@ it(`EditableSingleCollection functions correctly on delete`, async () => {
         { ProductTitle: "Item 2", ProductId: 2 },
       ]}
       deleteFn={deleteFn}
+      tapFn={(id) => null}
     />
   );
 
@@ -67,4 +69,43 @@ it(`EditableSingleCollection functions correctly on delete`, async () => {
   expect(deleteFn).toHaveBeenCalled();
   expect(deleteFn).toHaveBeenCalledWith(1, "Collection 1");
   await waitFor(() => expect(screen.queryByText("Item 1")).toBeNull());
+});
+
+it(`EditableSingleCollection functions correctly on tapping outside of delete mode`, async () => {
+  // let collectionItemName = "Collection 1";
+
+  const tapFn = jest.fn((itemId) =>
+    console.log(`Performing actions on item with id ${itemId}`)
+  );
+
+  // const itemFn = jest.fn(() => {
+  //   console.log(`Redirecting to ${collectionItemName} page`);
+  //   return collectionItemName;
+  // });
+
+  const { getByText } = render(
+    <EditableSingleCollection
+      collectionName={"Collection 1"}
+      collectionData={[
+        { ProductTitle: "Item 1", ProductId: 1 },
+        { ProductTitle: "Item 2", ProductId: 2 },
+      ]}
+      deleteFn={(itemName, collectionName) => null}
+      tapFn={tapFn}
+    />
+  );
+
+  const user = userEvent.setup();
+
+  // const editButton = getByText("Edit");
+  // await user.press(editButton);
+
+  const item1 = getByText("Item 1");
+  await user.press(item1);
+
+  // const confirmButton = getByText("Confirm");
+  // await user.press(confirmButton);
+
+  expect(tapFn).toHaveBeenCalled();
+  expect(tapFn).toHaveBeenCalledWith(1);
 });

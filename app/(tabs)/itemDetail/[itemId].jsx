@@ -2,10 +2,10 @@ import ItemDetailsPage from "@/components/tabs/Home/ItemDetailsPage";
 import { useCallback, useEffect, useState } from "react";
 import { useFocusEffect, useLocalSearchParams } from "expo-router";
 import getItemObjById from "@/utils/common/getItemObjById";
-import redirect from "@/utils/common/redirect";
 import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
 import redirectToSeller from "@/utils/common/redirectToSeller";
 import addItemToCart from "@/utils/cart/addItemToCart";
+import { router } from "expo-router";
 
 export default function itemDetail() {
   const { itemId } = useLocalSearchParams();
@@ -20,7 +20,7 @@ export default function itemDetail() {
 
   function closeDetailsPage() {
     setItemObj(null);
-    redirect("/");
+    router.back();
   }
 
   if (!itemObj) {

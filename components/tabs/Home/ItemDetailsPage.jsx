@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
     fontFamily: "Satoshi-Regular",
     fontSize: 22,
     textAlign: "center",
+    textShadowColor: "white",
     textShadowRadius: 6,
   },
 });

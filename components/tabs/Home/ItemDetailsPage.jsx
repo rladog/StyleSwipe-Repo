@@ -1,8 +1,17 @@
-import { StyleSheet, View, Text, Image, Modal, Pressable } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  Modal,
+  Pressable,
+  ScrollView,
+} from "react-native";
 import DetailedItemCard from "@/components/tabs/_common/DetailedItemCard";
 import CollectionMenu from "@/components/tabs/Home/CollectionMenu";
 import { useState } from "react";
 import LoadingScreen from "@/components/tabs/_common/LoadingScreen";
+import CardSlider from "@/components/tabs/_common/CardSlider";
 
 /*
 Component to display details about an item
@@ -80,42 +89,62 @@ export default function ItemDetails({ itemObj, closeFn, sellerFn, cartFn }) {
     };
   return (
     <>
-      <Details
-        itemObj={itemObj}
-        closeFn={closeFn}
-        showCollectionsFn={() => setShowCollectionMenu(true)}
-      />
-      {/* 
+      <ScrollView style={styles.container}>
+        <Details
+          itemObj={itemObj}
+          closeFn={closeFn}
+          showCollectionsFn={() => setShowCollectionMenu(true)}
+        />
+        {/* 
       Button holder at the bottom for users to perform additional actions
       */}
-      <View style={buttonStyles.bottomButtonHolder}>
-        <Pressable
-          style={pressableStyleFunction(
-            buttonStyles.bottomButton,
-            "rgb(255, 255, 247)",
-            "rgb(235, 235, 227)"
-          )}
-          onPress={() => sellerFn(itemObj)}
-        >
-          <Text style={buttonStyles.bottomButtonText}>
-            {/* 
+        <View style={buttonStyles.bottomButtonHolder}>
+          <Pressable
+            style={pressableStyleFunction(
+              buttonStyles.bottomButton,
+              "rgb(255, 255, 247)",
+              "rgb(235, 235, 227)"
+            )}
+            onPress={() => sellerFn(itemObj)}
+          >
+            <Text style={buttonStyles.bottomButtonText}>
+              {/* 
             Conditionally render text 
             depending on if the seller of the item is another user or a brand 
             */}
-            {itemObj.is_listing ? "Contact seller" : "Visit seller site"}
-          </Text>
-        </Pressable>
-        <Pressable
-          style={pressableStyleFunction(
-            buttonStyles.bottomButton,
-            "rgb(255, 255, 247)",
-            "rgb(235, 235, 227)"
-          )}
-          onPress={() => cartFn(itemObj)}
-        >
-          <Text style={buttonStyles.bottomButtonText}>Add to cart</Text>
-        </Pressable>
-      </View>
+              {itemObj.is_listing ? "Contact seller" : "Visit seller site"}
+            </Text>
+          </Pressable>
+          <Pressable
+            style={pressableStyleFunction(
+              buttonStyles.bottomButton,
+              "rgb(255, 255, 247)",
+              "rgb(235, 235, 227)"
+            )}
+            onPress={() => cartFn(itemObj)}
+          >
+            <Text style={buttonStyles.bottomButtonText}>Add to cart</Text>
+          </Pressable>
+        </View>
+        <CardSlider
+          sliderHeight={"25%"}
+          cardDataArray={[
+            {
+              ProductTitle: "Item 1",
+              ProductId: 2291,
+            },
+            {
+              ProductTitle: "Item 4",
+              ProductId: 2291,
+            },
+            {
+              ProductTitle: "Item 2",
+              ProductId: 2291,
+            },
+          ]}
+        />
+      </ScrollView>
+
       {/* 
       The CollectionMenu component which is displayed conditionally 
       based on the showCollectionMenu state 
@@ -173,7 +202,6 @@ const styles = StyleSheet.create({
 const buttonStyles = StyleSheet.create({
   bottomButtonHolder: {
     height: "10%",
-    // backgroundColor: "rgb(255, 255, 247)",
     position: "absolute",
     zIndex: 5,
     bottom: 0,

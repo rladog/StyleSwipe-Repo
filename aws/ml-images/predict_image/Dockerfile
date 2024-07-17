@@ -1,6 +1,10 @@
 # Use an official AWS Lambda runtime as a parent image
 FROM public.ecr.aws/lambda/python:3.11
 
+# Install AWS CLI
+RUN yum update -y && \
+    yum install -y awscli
+
 # Copy the function code into the container
 COPY src/* /var/task/
 
@@ -14,4 +18,4 @@ RUN chmod +x /var/task/lambda-entrypoint.sh
 
 # Specify the entrypoint and command to run the Lambda function
 ENTRYPOINT ["/var/task/lambda-entrypoint.sh"]
-CMD ["extract_features.lambda_handler"]
+CMD ["core_logic", "lambda_handler"]

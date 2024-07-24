@@ -90,6 +90,32 @@ export default function EditableSingleCollection({
     setSelectedItems(new Set());
   };
 
+  const handleSearch = (input) => {
+    if (input == "" || input.match(/\A\s*\z/)) {
+      setCollection(collectionData);
+      return;
+    }
+
+    setCollection(collection => {
+      collection.filter(itemObj => itemObj.ProductTitle.indexOf(input) != -1)
+    })
+  }
+
+  const handleSort = (sortOption) => {
+    switch(sortOption) {
+      case "Name, ascending":
+        setCollection(collection => {
+          collection.toSorted((obj1, obj2) => obj1.ProductTitle.localeCompare(obj2.ProductTitle))
+        })
+        break;
+      case "Name, descending":
+        setCollection(collection => {
+          collection.toSorted((obj1, obj2) => -(obj1.ProductTitle.localeCompare(obj2.ProductTitle)))
+        })
+        break;
+    }
+  }
+
   //Function to display each items in the collection
   //using the ItemCard
   const renderItem = ({ item }) => (

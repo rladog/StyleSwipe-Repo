@@ -18,4 +18,4 @@ RUN chmod +x /var/task/lambda-entrypoint.sh
 
 # Specify the entrypoint and command to run the Lambda function
 ENTRYPOINT ["/var/task/lambda-entrypoint.sh"]
-CMD ["core_logic", "lambda_handler"]
+CMD ["handler.lambda_handler"]

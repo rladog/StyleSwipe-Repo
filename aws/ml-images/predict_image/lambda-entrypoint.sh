@@ -1,14 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 
-# Print the handler name and arguments for debugging
-echo "Executing handler: $1 with function: $2"
+# Print the handler name for debugging
+echo "Executing handler: $1"
 
-# Execute the handler and then the function
-exec python3 -m $1 $2
+# Set the handler and run the AWS Lambda Runtime Interface Client
+exec python3 -m awslambdaric $1 
 
 # Add debugging information
 if [ $? -ne 0 ]; then
-  echo "Failed to execute handler: $1 with function: $2"
+  echo "Failed to execute handler: $1"
   exit 1
 fi
 

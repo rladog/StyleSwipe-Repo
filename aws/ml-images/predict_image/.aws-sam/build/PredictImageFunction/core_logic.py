@@ -46,16 +46,15 @@ async def load_npy_files_async(file_keys):
         results = await asyncio.gather(*tasks, return_exceptions=True)
     return results
 
-def initialize_variables(to_initialize):
+def initialize_variables():
     logging.info('Initialising variables')
     global men_features, women_features, boys_features, girls_features
     global men_product_ids, women_product_ids, boys_product_ids, girls_product_ids
     global fashion_df
-    features = [men_features, women_features, boys_features, girls_features, \
-                men_product_ids, women_product_ids, boys_product_ids, girls_product_ids, \
-                fashion_df]
 
-    if to_initialize or not (all(feature is not None and feature.size > 0 for feature in features)):
+    if not all([men_features, women_features, boys_features, girls_features,
+                men_product_ids, women_product_ids, boys_product_ids, girls_product_ids,
+                fashion_df]):
         
         file_keys = [
             'features/Men_ResNet_features.npy',
@@ -104,10 +103,18 @@ def get_similar_products_cnn(product_id, num_results):
     indices = np.argsort(pairwise_dist.flatten())[0:num_results]
     pdists = np.sort(pairwise_dist.flatten())[0:num_results]
     similar_product_ids = [ids_list[i] for i in indices]
-    logging.info('Similar products calculated')
     
-    data = {'similar_product_ids': similar_product_ids}
-    return data
+    return {'indices': indices, 'pdists': pdists, 'similar_product_ids': similar_product_ids}
+
+# def lambda_handler(event, context):
+#     logger.info('Within lambda_handler')
+#     print('Within lambda_handler')
+#         initialize_variables()
+    
+#     product_id = event["product_id"]
+#     num_results = event["num_results"]
+    
+#     return get_similar_products_cnn(product_id, num_results)
 
 # if __name__ == "__main__":
 #     event = {

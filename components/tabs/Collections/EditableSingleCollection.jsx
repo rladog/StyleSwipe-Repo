@@ -96,8 +96,10 @@ export default function EditableSingleCollection({
       return;
     }
 
+    input = input.toLowerCase().trim()
+
     setCollection(collection => {
-      collection.filter(itemObj => itemObj.ProductTitle.indexOf(input) != -1)
+      collection.filter(itemObj => (itemObj.ProductTitle.toLowerCase().trim()).indexOf(input) != -1)
     })
   }
 

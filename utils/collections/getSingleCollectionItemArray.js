@@ -1,7 +1,7 @@
 import { supabase } from "@/utils/common/supabase";
 import getUserId from "@/utils/common/getUserId";
 
-export default async function getSingleCollection(collectionName) {
+export default async function getSingleCollectionItemArray(collectionName) {
   let userId = await getUserId();
 
   if (!userId) {
@@ -25,12 +25,15 @@ export default async function getSingleCollection(collectionName) {
   if (data) {
     const collection = data?.collection_obj[collectionName];
 
+    console.log(collection);
+
     if (collection == undefined || collection == null) return null;
 
     const { data: idArray, error } = await supabase
       .from("items")
       .select()
-      .in("ProductId", collection);
+      
+      .in("ProductId", collection["productArray"]);
 
     if (error) {
       alert("Error fetching collections");

@@ -32,11 +32,11 @@ export default async function removeItemFromCollection(itemId, collectionName) {
       return false;
     }
 
-    function removeNumber(array, numberToRemove) {
-      return array.filter((item) => item !== numberToRemove);
-    }
+    let collectionArray = collection.productArray;
 
-    collection = collection.filter((x) => x != itemId);
+    collectionArray = collectionArray.filter((x) => x != itemId);
+
+    collection = { ...collection, productArray: collectionArray}
 
     collection_obj = { collection, ...collection_obj };
 

@@ -25,7 +25,7 @@ export default async function addItemToCollection(itemId, collectionName) {
   if (data) {
     let collection_obj = data?.collection_obj;
 
-    let collection = collection_obj[collectionName];
+    let collection = collection_obj[collectionName][ProductArray];
 
     if (collection == null) {
       alert(`Collection titled ${collectionName} doesn't exist`);
@@ -33,6 +33,7 @@ export default async function addItemToCollection(itemId, collectionName) {
       return false;
     }
     if (collection.find((id) => id == itemId)) return true;
+
     collection.push(itemId);
 
     const updates = {

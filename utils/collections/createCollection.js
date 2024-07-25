@@ -30,7 +30,7 @@ export default async function createCollection(collectionName) {
       return false;
     }
 
-    collection_obj[collectionName] = [];
+    collection_obj[collectionName] = {hearts: [], productArray: []};
 
     const updates = {
       user_id: userId,

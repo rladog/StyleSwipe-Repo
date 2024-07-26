@@ -1,0 +1,11 @@
+{
+    "product_id": "10634",
+    "num_results": 5,
+    "initialized": false
+  }
+
+  curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{
+    "product_id": "10634",
+    "num_results": 5,
+    "initialized": false
+  }'
